@@ -42,6 +42,11 @@ def default(event):
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
+    print(event)
+    #if(event.message.location !="") :
+    #    print("address:"+evevt.source.location.address)
+    #    print("latitude:"+evevt.source.location.latitude)
+    #    print("longitude:"+evevt.source.location.longitude)
     
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
