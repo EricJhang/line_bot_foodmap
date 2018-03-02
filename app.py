@@ -60,10 +60,10 @@ def handle_lcationmessage(event):
         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference_str+"&key="+googlekey
         req_photo = requests.get(url_photo)
         print(type(req_photo))
-        print(req_photo.text)    
+        print(req_photo.headers['content-type'])    
         message_photo = ImageSendMessage(
-            original_content_url=req_photo,
-            preview_image_url=req_photo
+            original_content_url=req_photo.json(),
+            preview_image_url=req_photo.json()
         )
         push_message(event.source.user_id,message_photo)
         message = LocationSendMessage(
