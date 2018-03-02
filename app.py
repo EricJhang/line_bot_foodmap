@@ -55,6 +55,10 @@ def handle_lcationmessage(event):
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
+    if(event.source.type == 'user'):
+        push_userid = event.source.user_id
+    elif(event.source.type == 'group'):
+        push_userid = event.source.groupId 
     for i in range(len(foodinfo['results'])):
         photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
@@ -65,7 +69,7 @@ def handle_lcationmessage(event):
             original_content_url=url_photo,
             preview_image_url=url_photo
         )
-        push_message(event.source.user_id,message_photo)
+        push_message(push_userid,message_photo)
         message = LocationSendMessage(
             title=foodinfo['results'][i]['name'],
             address=foodinfo['results'][i]['vicinity'],
@@ -73,7 +77,7 @@ def handle_lcationmessage(event):
             longitude=foodinfo['results'][i]['geometry']['location']['lng']
         )
         #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-        push_message(event.source.user_id,message)
+        push_message(push_userid,message)
         if(i >=5): break    
     print(req.text)
     
