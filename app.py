@@ -15,9 +15,9 @@ import os
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi(os.environ[linetoken])
+line_bot_api = LineBotApi(os.environ["linetoken"])
 # Channel Secret
-handler = WebhookHandler(os.environ[linechannel])
+handler = WebhookHandler(os.environ["linechannel"])
 
 googlekey = os.environ[googlePreminkey]
 
@@ -87,7 +87,7 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    replay_message(event,message)
+    #replay_message(event,message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
     #if(event.message.location !="") :
     #    print("address:"+evevt.source.location.address)
