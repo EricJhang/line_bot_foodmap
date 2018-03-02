@@ -56,7 +56,7 @@ def handle_lcationmessage(event):
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
     for i in range(len(foodinfo['results'])):
-        photo_reference = foodinfo['results'][i]["photos"]["photo_reference"]
+        photo_reference = foodinfo['results'][i]['photos']['photo_reference']
         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference+"&key="+googlekey
         req_photo = requests.get(url_photo)
         print(type(req_photo))    
@@ -66,10 +66,10 @@ def handle_lcationmessage(event):
         )
         push_message(event.source.user_id,message_photo)
         message = LocationSendMessage(
-            title=foodinfo['results'][i]["name"],
-            address=foodinfo['results'][i]["vicinity"],
-            latitude=foodinfo['results'][i]["geometry"]["location"]["lat"],
-            longitude=foodinfo['results'][i]["geometry"]["location"]["lng"]
+            title=foodinfo['results'][i]['name'],
+            address=foodinfo['results'][i]['vicinity'],
+            latitude=foodinfo['results'][i]['geometry']['location']['lat'],
+            longitude=foodinfo['results'][i]['geometry']['location']['lng']
         )
         #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
         push_message(event.source.user_id,message)
