@@ -15,11 +15,11 @@ import json
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('BoKpSTL4JjFTe9+x/CqKVQvzikeizZQ3A2Jmw1mVAhmCU5sLqi6kMbCpslBagPon7OKjG37LLrxC7Jw+IZQhCT4fe501a8DX+69JDgbDJwtznkL7UX57698MRRmR7qc5q7I4BURtw7/+5A83vyCJqQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi(process.env.linetoken)
 # Channel Secret
-handler = WebhookHandler('844a89ee1dc510011e9869fb7dc6c4fd')
+handler = WebhookHandler(process.env.linechannel)
 
-googlekey = 'AIzaSyCsaVTYyirJo8dXRnph1N51Xp2Moj4Hf-k'
+googlekey = process.env.googlePreminkey
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -87,7 +87,7 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    #replay_message(event,message)
+    replay_message(event,message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
     #if(event.message.location !="") :
     #    print("address:"+evevt.source.location.address)
