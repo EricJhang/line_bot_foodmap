@@ -80,22 +80,22 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    replay_message(event,message)
-    content = "{}: {}".format(event.source.user_id, event.message.text)
+    #replay_message(event,message)
+    #content = "{}: {}".format(event.source.user_id, event.message.text)
     #if(event.message.location !="") :
     #    print("address:"+evevt.source.location.address)
     #    print("latitude:"+evevt.source.location.latitude)
     #    print("longitude:"+evevt.source.location.longitude)
     
-    try:
-        profile = line_bot_api.get_profile(event.source.user_id)
-        print(profile.display_name)
-        print(profile.user_id)
-        print(profile.picture_url)
-        print(profile.status_message)
-    except LineBotApiError as e:
-        print(e)
-    print(content)
+    #try:
+    #    profile = line_bot_api.get_profile(event.source.user_id)
+    #    print(profile.display_name)
+    #    print(profile.user_id)
+    #    print(profile.picture_url)
+    #    print(profile.status_message)
+    #except LineBotApiError as e:
+    #    print(e)
+    #print(content)
 
         
 def replay_message(event,text):
