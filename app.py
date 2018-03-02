@@ -56,8 +56,8 @@ def handle_lcationmessage(event):
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
     for i in range(len(foodinfo['results'])):
-        photo_reference = foodinfo['results'][i]['photos']['photo_reference']
-        url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference+"&key="+googlekey
+        photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
+        url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference_str+"&key="+googlekey
         req_photo = requests.get(url_photo)
         print(type(req_photo))    
         message_photo = ImageSendMessage(
