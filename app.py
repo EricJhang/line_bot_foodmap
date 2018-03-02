@@ -70,7 +70,7 @@ def handle_lcationmessage(event):
             original_content_url=url_photo,
             preview_image_url=url_photo
         )
-        push_message(push_userid,message_photo)
+        #push_message(push_userid,message_photo)
         message = LocationSendMessage(
             title=foodinfo['results'][i]['name'],
             address=foodinfo['results'][i]['vicinity'],
@@ -78,7 +78,7 @@ def handle_lcationmessage(event):
             longitude=foodinfo['results'][i]['geometry']['location']['lng']
         )
         #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-        push_message(push_userid,message)
+        push_message(push_userid,message+message_photo)
         if(i >=5): 
             i = len(foodinfo['results'])
             break    
