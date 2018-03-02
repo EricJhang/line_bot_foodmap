@@ -47,9 +47,9 @@ def default(event):
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
     print(event)
-    print("address:"+event.message.address)
-    print("latitude:"+event.message.latitude)
-    print("longitude:"+event.message.longitude)
+    print("address:"+str(event.message.address))
+    print("latitude:"+str(event.message.latitude))
+    print("longitude:"+str(event.message.longitude))
     latitude = event.message.latitude
     longitude = event.message.longitude
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+latitude+'.'+longitude+'&radius=500&type=restaurant&key='+googlekey
