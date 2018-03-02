@@ -52,8 +52,10 @@ def handle_lcationmessage(event):
     print("longitude:"+str(event.message.longitude))
     latitude = event.message.latitude
     longitude = event.message.longitude
-    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&type=restaurant&key='+googlekey
+    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
     req = requests.get(url)#發送請求
+    for i in range(len(req.text.results)):
+        print(req.text.results.name[i])
     print(req.text)
     
 @handler.add(MessageEvent, message=TextMessage)
