@@ -58,12 +58,12 @@ def handle_lcationmessage(event):
     for i in range(len(foodinfo['results'])):
         photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference_str+"&key="+googlekey
-        req_photo = requests.get(url_photo)
+        req_photo = requests.get(url_photo,stream=True)
         print(type(req_photo))
         print(req_photo.headers['content-type'])    
         message_photo = ImageSendMessage(
-            original_content_url=req_photo.json(),
-            preview_image_url=req_photo.json()
+            original_content_url=req_photo.raw,
+            preview_image_url=req_photo.raw
         )
         push_message(event.source.user_id,message_photo)
         message = LocationSendMessage(
