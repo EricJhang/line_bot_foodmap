@@ -56,7 +56,15 @@ def handle_lcationmessage(event):
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
     for i in range(len(foodinfo['results'])):
-        print(foodinfo['results'][i]["name"])
+        print(foodinfo['results'][i]["name"])    
+        message = LocationSendMessage(
+            title=foodinfo['results'][i]["name"],
+            address=foodinfo['results'][i]["vicinity"],
+            latitude=foodinfo['results'][i]["geometry"]["location"]["lat"],
+            longitude=foodinfo['results'][i]["geometry"]["location"]["lng"]
+        ) 
+        message = foodinfo['results'][i]["name"]+"分數:"+foodinfo['results'][i]["rating"]+"\n"+message
+        replay_message(event,message)    
     print(req.text)
     
 @handler.add(MessageEvent, message=TextMessage)
