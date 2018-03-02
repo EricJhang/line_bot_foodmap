@@ -41,11 +41,11 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     replay_message(event,message)
     content = "{}: {}".format(event.source.user_id, event.message.text)
-    if(evevt.source.location !="") {
+    if(evevt.source.location !="") :
         print("address:"+evevt.source.location.address)
         print("latitude:"+evevt.source.location.latitude)
         print("longitude:"+evevt.source.location.longitude)
-    }
+    
     try:
         profile = line_bot_api.get_profile(event.source.user_id)
         print(profile.display_name)
