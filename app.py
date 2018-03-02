@@ -47,11 +47,11 @@ def default(event):
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
     print(event)
-    print("address:"+evevt.message.address)
-    print("latitude:"+evevt.message.latitude)
-    print("longitude:"+evevt.message.longitude)
-    latitude = evevt.message.latitude
-    longitude = evevt.message.longitude
+    print("address:"+event.message.address)
+    print("latitude:"+event.message.latitude)
+    print("longitude:"+event.message.longitude)
+    latitude = event.message.latitude
+    longitude = event.message.longitude
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+latitude+'.'+longitude+'&radius=500&type=restaurant&key='+googlekey
     req = requests.get(url)#發送請求
     print(req.text)
