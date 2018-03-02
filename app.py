@@ -11,15 +11,15 @@ from linebot.models import (
 )
 import requests
 import json
-
+import os
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi(process.env.linetoken)
+line_bot_api = LineBotApi(os.environ[linetoken])
 # Channel Secret
-handler = WebhookHandler(process.env.linechannel)
+handler = WebhookHandler(os.environ[linechannel])
 
-googlekey = process.env.googlePreminkey
+googlekey = os.environ[googlePreminkey]
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
