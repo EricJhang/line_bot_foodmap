@@ -39,23 +39,23 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-	replay_message(event,message)
-	content = "{}: {}".format(event.source.user_id, event.message.text)
-	try:
-		profile = line_bot_api.get_profile(event.source.user_id)
-		print(profile.display_name)
-		print(profile.user_id)
-		print(profile.picture_url)
-		print(profile.status_message)
-	except LineBotApiError as e:
-	print(content)
+    replay_message(event,message)
+    content = "{}: {}".format(event.source.user_id, event.message.text)
+    try:
+        profile = line_bot_api.get_profile(event.source.user_id)
+        print(profile.display_name)
+        print(profile.user_id)
+        print(profile.picture_url)
+        print(profile.status_message)
+    except LineBotApiError as e:
+    print(content)
 
-		
+        
 def replay_message(event,text):
-	line_bot_api.reply_message(
+    line_bot_api.reply_message(
         event.reply_token,
-        text)		
-		
+        text)       
+        
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
