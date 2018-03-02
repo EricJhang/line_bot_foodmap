@@ -66,7 +66,7 @@ def handle_lcationmessage(event):
             url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
         else :
             photo_reference_str = ""
-        if(foodinfo['results'][i]['rating'] >= 4):
+        if(foodinfo['results'][i]['rating'] >= 3.5):
             req_photo = requests.get(url_photo,stream=True)
             message_photo = ImageSendMessage(
                 original_content_url=url_photo,
