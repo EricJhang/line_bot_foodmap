@@ -39,7 +39,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-	replay_message(message)
+	replay_message(event,message)
 	content = "{}: {}".format(event.source.user_id, event.message.text)
 	try:
 		profile = line_bot_api.get_profile(event.source.user_id)
@@ -51,7 +51,7 @@ def handle_message(event):
 	print(content)
 
 		
-def replay_message(text):
+def replay_message(event,text):
 	line_bot_api.reply_message(
         event.reply_token,
         text)		
