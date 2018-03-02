@@ -48,7 +48,7 @@ def handle_message(event):
         print(profile.picture_url)
         print(profile.status_message)
     except LineBotApiError as e:
-		print(e)
+        print(e)
     print(content)
 
         
