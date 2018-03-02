@@ -59,7 +59,8 @@ def handle_lcationmessage(event):
         photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference="+photo_reference_str+"&key="+googlekey
         req_photo = requests.get(url_photo)
-        print(type(req_photo))    
+        print(type(req_photo))
+        print(req_photo.text)    
         message_photo = ImageSendMessage(
             original_content_url=req_photo,
             preview_image_url=req_photo
