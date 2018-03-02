@@ -41,7 +41,7 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     replay_message(event,message)
     content = "{}: {}".format(event.source.user_id, event.message.text)
-    if(event.source.location !="") :
+    if(event.message.location !="") :
         print("address:"+evevt.source.location.address)
         print("latitude:"+evevt.source.location.latitude)
         print("longitude:"+evevt.source.location.longitude)
