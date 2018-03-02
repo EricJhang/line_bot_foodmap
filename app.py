@@ -61,7 +61,7 @@ def handle_lcationmessage(event):
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
     for i in range(len(foodinfo['results'])):
-        if(foodinfo['results'][i].has_key('photos')):
+        if( 'photos' in foodinfo['results'][i]):
             photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
             url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
         else :
