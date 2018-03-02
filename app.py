@@ -64,7 +64,7 @@ def handle_lcationmessage(event):
             longitude=foodinfo['results'][i]["geometry"]["location"]["lng"]
         ) 
         #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-        replay_message(event,message)    
+        push_message(event.source.user_id,message)    
     print(req.text)
     
 @handler.add(MessageEvent, message=TextMessage)
@@ -92,6 +92,8 @@ def replay_message(event,text):
     line_bot_api.reply_message(
         event.reply_token,
         text)       
+def push_message(userid,text):
+    line_bot_api.push_message(userid,text)
         
 import os
 if __name__ == "__main__":
