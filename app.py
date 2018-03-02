@@ -61,25 +61,27 @@ def handle_lcationmessage(event):
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
     for i in range(len(foodinfo['results'])):
-        photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
-        url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
-        req_photo = requests.get(url_photo,stream=True)
-        print(type(req_photo))
-        print(req_photo.headers['content-type'])        
-        message_photo = ImageSendMessage(
-            original_content_url=url_photo,
-            preview_image_url=url_photo
-        )
-        push_message(push_userid,message_photo)
-        message = LocationSendMessage(
-            title=foodinfo['results'][i]['name'],
-            address=foodinfo['results'][i]['vicinity'],
-            latitude=foodinfo['results'][i]['geometry']['location']['lat'],
-            longitude=foodinfo['results'][i]['geometry']['location']['lng']
-        )
-        #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-        push_message(push_userid,message)
-        if(i >=5): 
+        if(foodinfo['results'][i].has_key('photos')):
+            photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
+            url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
+        else :
+            photo_reference_str = ""
+        if(foodinfo['results'][i]['rating'] >= 4):
+            req_photo = requests.get(url_photo,stream=True)
+            message_photo = ImageSendMessage(
+                original_content_url=url_photo,
+                preview_image_url=url_photo
+            )
+            push_message(push_userid,message_photo)
+            message = LocationSendMessage(
+                title=foodinfo['results'][i]['name'],
+                address=foodinfo['results'][i]['vicinity'],
+                latitude=foodinfo['results'][i]['geometry']['location']['lat'],
+                longitude=foodinfo['results'][i]['geometry']['location']['lng']
+            )
+            #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
+            push_message(push_userid,message)
+        if(i >=4): 
             i = len(foodinfo['results'])
             break    
     print(req.text)
