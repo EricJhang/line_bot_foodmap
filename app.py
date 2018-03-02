@@ -19,7 +19,7 @@ line_bot_api = LineBotApi(os.environ["linetoken"])
 # Channel Secret
 handler = WebhookHandler(os.environ["linechannel"])
 
-googlekey = os.environ[googlePreminkey]
+googlekey = os.environ["googlePreminkey"]
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
