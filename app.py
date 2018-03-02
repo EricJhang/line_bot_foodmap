@@ -62,8 +62,8 @@ def handle_lcationmessage(event):
         print(type(req_photo))
         print(req_photo.headers['content-type'])    
         message_photo = ImageSendMessage(
-            original_content_url=req_photo.files,
-            preview_image_url=req_photo.files
+            original_content_url=req_photo.content,
+            preview_image_url=req_photo.content
         )
         push_message(event.source.user_id,message_photo)
         message = LocationSendMessage(
