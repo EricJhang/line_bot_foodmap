@@ -35,16 +35,23 @@ def callback():
 
     return 'OK'
 
+@handler.default()
+def default(event):
+    print(event)
 
+@handler.add(Message, message=LocationMessage)
+def handle_lcationmessage(event):
+    print("call handle_lcationmessage sucess")
+    
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     replay_message(event,message)
     content = "{}: {}".format(event.source.user_id, event.message.text)
-    if(event.message.location !="") :
-        print("address:"+evevt.source.location.address)
-        print("latitude:"+evevt.source.location.latitude)
-        print("longitude:"+evevt.source.location.longitude)
+    #if(event.message.location !="") :
+    #    print("address:"+evevt.source.location.address)
+    #    print("latitude:"+evevt.source.location.latitude)
+    #    print("longitude:"+evevt.source.location.longitude)
     
     try:
         profile = line_bot_api.get_profile(event.source.user_id)
