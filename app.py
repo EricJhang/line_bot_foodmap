@@ -39,7 +39,7 @@ def callback():
 def default(event):
     print(event)
 
-@handler.add(Message, message=LocationMessage)
+@handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
     
