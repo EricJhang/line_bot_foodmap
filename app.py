@@ -63,7 +63,7 @@ def handle_lcationmessage(event):
             latitude=foodinfo['results'][i]["geometry"]["location"]["lat"],
             longitude=foodinfo['results'][i]["geometry"]["location"]["lng"]
         ) 
-        message = foodinfo['results'][i]["name"]+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
+        #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
         replay_message(event,message)    
     print(req.text)
     
