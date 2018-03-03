@@ -47,7 +47,7 @@ def default(event):
     print("enter default")
     print(event)
     if(event.type=="postback"):
-        if !(event.source.user_id in serch_location):
+        if (event.source.user_id in serch_location) == False:
             serch_location = {}
             serch_location[event.source.user_id]=event.source.user_id
             serch_location["search_kind"]=event.postback.data
@@ -111,7 +111,10 @@ def handle_lcationmessage(event):
     print("longitude:"+str(event.message.longitude))
     latitude = event.message.latitude
     longitude = event.message.longitude
-    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
+    if("台灣" in event.message.address) or ("台湾" in event.message.address):
+        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
+    else:
+        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=en&opennow&type=restaurant&key='+googlekey    
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
     print(event)
@@ -245,7 +248,7 @@ def handle_message(event):
             elif(event.source.type == 'group'):
                 push_userid = event.source.group_id
             if("search_kind" in serch_location):
-                if !("address" in serch_location):
+                if ("address" in serch_location) == False :
                     address_tmp = serch_location["address"].split('#')[1];
                     url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+serch_location["search_kind"]+'+in+'+address_tmp+'&key='+googlekey
                     req = requests.get(url)#發送請求
