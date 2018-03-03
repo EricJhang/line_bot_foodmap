@@ -93,9 +93,9 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="推薦指數:"+foodinfo['results'][i]['rating'],actions=actions))
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions))
                   
-        if(i >=4): 
+        if(i >=10): 
             i = len(foodinfo['results'])
             break            
     carousel_template_message = TemplateSendMessage(
@@ -109,12 +109,10 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
+    if(message == "#美食")
     #replay_message(event,message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
-    #if(event.message.location !="") :
-    #    print("address:"+evevt.source.location.address)
-    #    print("latitude:"+evevt.source.location.latitude)
-    #    print("longitude:"+evevt.source.location.longitude)
+
     
     #try:
     #    profile = line_bot_api.get_profile(event.source.user_id)
