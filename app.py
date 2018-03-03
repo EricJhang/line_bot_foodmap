@@ -141,7 +141,6 @@ def handle_message(event):
     print(event)
     print(event.message.text)
     print(message)
-    print(message_text['message']['id'])
     message_content = line_bot_api.get_message_content(event.message.id)
     print(message_content)
     if(event.source.type == 'user'):
