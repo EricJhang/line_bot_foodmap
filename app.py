@@ -90,8 +90,9 @@ def handle_lcationmessage(event):
             template=CarouselTemplate(columns=columns_list)
         )
         print(columns_list)
-        print(carousel_template_message)
-        push_message(push_userid,carousel_template_message)
+        #print(carousel_template_message)
+        #push_message(push_userid,carousel_template_message)
+        replay_message(event,carousel_template_message)
     else:
         message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
         push_message(push_userid,message)
