@@ -92,7 +92,11 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions_tmp))
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                    URITemplateAction(
+                        label='位置',
+                        uri=address_url
+                    )]))
         if(i >=10): 
             i = len(foodinfo['results'])
             break            
@@ -102,6 +106,7 @@ def handle_lcationmessage(event):
                 columns=columns_list
         )
     )
+    print(columns_list)
     print(carousel_template_message)
     push_message(push_userid,carousel_template_message)
     #print(req.text)    
