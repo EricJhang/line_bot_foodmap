@@ -140,14 +140,14 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            if(url_photo!="") and('rating' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
+            if(url_photo!="") and('vicinity' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
                             uri=address_url
                         )]))
             elif(url_photo!="") and ('name' in foodinfo['results'][i]) :
-                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
                             URITemplateAction(
                                 label='位置',
                                 uri=address_url
@@ -163,11 +163,7 @@ def handle_lcationmessage(event):
                 columns_list[1],
                 columns_list[2],
                 columns_list[3],
-                columns_list[4],
-                columns_list[5],
-                columns_list[6],
-                columns_list[7],
-                columns_list[8]])
+                columns_list[4]])
             )
         elif( len(columns_list) >=5 and len(columns_list) < 9):
             carousel_template_message = TemplateSendMessage(
@@ -269,14 +265,14 @@ def handle_message(event):
                                         label='位置',
                                         uri=address_url
                                     )]
-                            if(url_photo!="") and('rating' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
+                            if(url_photo!="") and('vicinity' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
                                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text=drink_json['results'][i]['vicinity']),
                                         URITemplateAction(
                                             label='位置',
                                             uri=address_url
                                         )]))
                             elif(url_photo!="") and ('name' in drink_json['results'][i]) :
-                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text=drink_json['results'][i]['vicinity']),
+                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text="無法顯示地址"),
                                             URITemplateAction(
                                                 label='位置',
                                                 uri=address_url
