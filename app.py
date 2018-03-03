@@ -91,7 +91,8 @@ def handle_lcationmessage(event):
             if(i >=15): 
                 i = len(foodinfo['results'])
                 break
-        if(len(columns_list) >=9):        
+        print(str(len(columns_list)))        
+        if(len(columns_list) >=9) and False:        
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -104,7 +105,7 @@ def handle_lcationmessage(event):
                 columns_list[7],
                 columns_list[8]])
             )
-        elif( len(columns_list) >=5 and len(columns_list) < 9):
+        elif( len(columns_list) >=5 and len(columns_list) < 9) and False:
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -113,7 +114,7 @@ def handle_lcationmessage(event):
                 columns_list[3],
                 columns_list[4]])
             )
-        elif( len(columns_list) >=3 and len(columns_list) < 5):
+        elif( len(columns_list) >=3 and len(columns_list) < 5) and False:
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -141,7 +142,6 @@ def handle_message(event):
     print(event)
     print(event.message.text)
     print(message)
-    print(message_content)
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
