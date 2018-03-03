@@ -133,8 +133,11 @@ def handle_lcationmessage(event):
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #message_text = json.loads(event.message.text)
+    print("event.message.text type:"+type(event.message.text))
+    print("message type :"+type(message))
+    print(event.message.text)
     print(message)
-    if(message["text"] == "#美食"):
+    if(event.message.text == "#美食"):
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
             template=ButtonsTemplate(
