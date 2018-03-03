@@ -83,6 +83,7 @@ def handle_lcationmessage(event):
                 latitude=foodinfo['results'][i]['geometry']['location']['lat'],
                 longitude=foodinfo['results'][i]['geometry']['location']['lng']
             )
+            print(type(message))
             #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
             #push_message(push_userid,message)
             thumbnail_image_url = url_photo
@@ -98,6 +99,7 @@ def handle_lcationmessage(event):
         alt_text='Carousel template',
         template=CarouselTemplate(columns)
     )
+    print(type(carousel_template_message))
     push_message(event,carousel_template_message)
     
 @handler.add(MessageEvent, message=TextMessage)
