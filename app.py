@@ -88,33 +88,17 @@ def handle_lcationmessage(event):
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
             actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
-            #columns.append(CarouselColumn(thumbnail_image_url,title ,"地址",actions))
+            columns.append(CarouselColumn(thumbnail_image_url,title ,"地址",actions))
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(
-                            columns=[
-                                CarouselColumn(
-                                    thumbnail_image_url=url_photo,
-                                    title=foodinfo['results'][i]['name'],
-                                    text='餐廳',
-                                    actions=[
-                                        PostbackTemplateAction(
-                                            label='postback1',
-                                            text='postback text1',
-                                            data='action=buy&itemid=1'
-                                        ),
-                                        MessageTemplateAction(
-                                            label='地址',
-                                            text=foodinfo['results'][i]['vicinity']
-                                        )
-                                    ]
-                                )
-                            ]
+                            columns
                 )
             )
             push_message(push_userid,carousel_template_message)            
         if(i >=4): 
-            i = len(foodinfo['results'])  
+            i = len(foodinfo['results'])
+            break            
     """            
     carousel_template_message = TemplateSendMessage(
         alt_text='Carousel template',
