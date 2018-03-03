@@ -132,9 +132,38 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
+    message_text = json.loads(message)
     print(message)
-    #if(message == "#美食"):
-    #    None
+    if(message["text"] == "#美食"):
+        buttons_template_message = TemplateSendMessage(
+            alt_text='搜尋附近美食',
+            template=ButtonsTemplate(
+                thumbnail_image_url='',
+                title='美食搜尋',
+                text='按此搜尋',
+                actions=[
+                    PostbackTemplateAction(
+                        label='餐廳',
+                        text='餐廳搜尋',
+                        data='action=buy&itemid=1'
+                    ),
+                    PostbackTemplateAction(
+                        label='飲料',
+                        text='飲料搜尋',
+                        data='action=buy&itemid=1'
+                    ),
+                    PostbackTemplateAction(
+                        label='加油站',
+                        text='加油站搜尋',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message',
+                        text='message text'
+                    ),
+                ]
+            )
+        )
     #replay_message(event,message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
