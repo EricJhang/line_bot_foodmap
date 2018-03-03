@@ -88,10 +88,34 @@ def handle_lcationmessage(event):
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
             actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
-            columns.append(CarouselColumn(thumbnail_image_url,title ,text,actions))
+            #columns.append(CarouselColumn(thumbnail_image_url,title ,"地址",actions))
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(
+                            columns=[
+                                CarouselColumn(
+                                    thumbnail_image_url=url_photo,
+                                    title=foodinfo['results'][i]['name'],
+                                    text='餐廳',
+                                    actions=[
+                                        PostbackTemplateAction(
+                                            label='postback1',
+                                            text='postback text1',
+                                            data='action=buy&itemid=1'
+                                        ),
+                                        MessageTemplateAction(
+                                            label='地址',
+                                            text=foodinfo['results'][i]['vicinity']
+                                        )
+                                    ]
+                                )
+                            ]
+                )
+            )
+            push_message(push_userid,carousel_template_message)            
         if(i >=4): 
-            i = len(foodinfo['results'])
-            
+            i = len(foodinfo['results'])  
+    """            
     carousel_template_message = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(columns)
@@ -99,7 +123,7 @@ def handle_lcationmessage(event):
     print(columns)
     print(carousel_template_message)    
     push_message(push_userid,carousel_template_message)
-    
+    """
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
