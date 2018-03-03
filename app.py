@@ -249,6 +249,8 @@ def handle_message(event):
                 if ("address" in serch_location) == False :
                     address_tmp = event.message.text.split(',')[1];
                     url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+serch_location["search_kind"]+'+in+'+address_tmp+'&key='+googlekey
+                    print(event.message.text.split(','))
+                    print(url)
                     req = requests.get(url)#發送請求
                     drink_json = json.loads(req.text) 
                     columns_list=[]
@@ -272,7 +274,7 @@ def handle_message(event):
                                             uri=address_url
                                         )]))
                             elif(url_photo!="") and ('name' in drink_json['results'][i]) :
-                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text="無法顯示地址"),
+                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
                                             URITemplateAction(
                                                 label='位置',
                                                 uri=address_url
