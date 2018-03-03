@@ -92,14 +92,14 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions_tmp))          
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions_tmp))
         if(i >=10): 
             i = len(foodinfo['results'])
             break            
     carousel_template_message = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(
-                columns=columns_list                        
+                columns=columns_list
         )
     )
     push_message(push_userid,carousel_template_message)
