@@ -132,7 +132,7 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    message_text = json.loads(event.message.text)
+    #message_text = json.loads(event.message.text)
     print(message)
     if(message["text"] == "#美食"):
         buttons_template_message = TemplateSendMessage(
