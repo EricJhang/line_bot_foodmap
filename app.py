@@ -113,8 +113,10 @@ def handle_lcationmessage(event):
     longitude = event.message.longitude
     if("台灣" in event.message.address) or ("台湾" in event.message.address):
         url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
+        print("address 包含 台灣")
     else:
-        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=en&opennow&type=restaurant&key='+googlekey    
+        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=en&opennow&type=restaurant&key='+googlekey
+        print("address 沒有 台灣")    
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
     print(event)
@@ -249,7 +251,7 @@ def handle_message(event):
                 push_userid = event.source.group_id
             if("search_kind" in serch_location):
                 if ("address" in serch_location) == False :
-                    address_tmp = serch_location["address"].split('#')[1];
+                    address_tmp = event.message.text.split(',')[1];
                     url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+serch_location["search_kind"]+'+in+'+address_tmp+'&key='+googlekey
                     req = requests.get(url)#發送請求
                     drink_json = json.loads(req.text) 
