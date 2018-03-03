@@ -300,6 +300,7 @@ def handle_message(event):
                         )
                         #print(carousel_template_message)
                         push_message(push_userid,carousel_template_message)
+                        serch_location = []
                     else:
                         message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         push_message(push_userid,message)
