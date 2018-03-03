@@ -141,7 +141,7 @@ def handle_lcationmessage(event):
         for i in range(len(foodinfo['results'])):
             if( 'photos' in foodinfo['results'][i]):
                 photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
-                url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
+                url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference="+photo_reference_str+"&key="+googlekey
             else :
                 url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
@@ -238,7 +238,7 @@ def handle_message(event):
     elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ):
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
-        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+'&key='+googlekey
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&language=zh-TW"+'&key='+googlekey
         print(event.message.text.split(','))
         print(url)
         req = requests.get(url)#發送請求
