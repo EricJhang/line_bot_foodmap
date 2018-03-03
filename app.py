@@ -151,11 +151,7 @@ def handle_lcationmessage(event):
             else:
                 url_photo_flag = False
             if(url_photo_flag) and('vicinity' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
-                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
-                        URITemplateAction(
-                            label='位置',
-                            uri=address_url
-                        )]))
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5"))
             elif(url_photo_flag) and ('name' in foodinfo['results'][i]) :
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
                             URITemplateAction(
