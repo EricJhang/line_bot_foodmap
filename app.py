@@ -21,6 +21,7 @@ handler = WebhookHandler(os.environ["linechannel"])
 
 googlekey = os.environ["googlePreminkey"]
 tmp_count = 0
+serch_location = []
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -184,7 +185,8 @@ def handle_message(event):
         tmp_count += 1
         replay_message(event,buttons_template_message)
     elif(event.message.text == "#飲料"):
-        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+event.message.text+'+in+'+"台北"+'&key='+googlekey
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+event.message.text+'+in+'+'台北'+'&key='+googlekey
+        print(url)
         tmp_count += 1
         req = requests.get(url)#發送請求
         drink_json = json.loads(req.text)
