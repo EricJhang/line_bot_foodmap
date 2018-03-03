@@ -141,27 +141,25 @@ def handle_lcationmessage(event):
                     URITemplateAction(
                         label='位置',
                         uri=address_url
-                    )]
-            if(isTaiwan) :      
-                if(url_photo!="") and('vicinity' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
-                    columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                    )] 
+            if(url_photo!="") and('vicinity' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                        URITemplateAction(
+                            label='位置',
+                            uri=address_url
+                        )]))
+            elif(url_photo!="") and ('name' in foodinfo['results'][i]) :
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
                             URITemplateAction(
                                 label='位置',
                                 uri=address_url
                             )]))
-                elif(url_photo!="") and ('name' in foodinfo['results'][i]) :
-                    columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
-                                URITemplateAction(
-                                    label='位置',
-                                    uri=address_url
-                                )]))
             else:
-               if(url_photo!="") and('vicinity' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
-                    columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = "無法顯示",text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=無法顯示地址,text="無法顯示地址"),
                             URITemplateAction(
                                 label='位置',
                                 uri=address_url
-                            )])) 
+                            )]))
             if(i >=9): 
                 i = len(foodinfo['results'])
                 break
@@ -290,7 +288,7 @@ def handle_message(event):
                                                     label='位置',
                                                     uri=address_url
                                                 )]))
-                            if(i >=5): 
+                            if(i >=4): 
                                 i = len(drink_json['results'])
                                 break        
                         carousel_template_message = TemplateSendMessage(
@@ -300,7 +298,7 @@ def handle_message(event):
                         #print(carousel_template_message)
                         push_message(push_userid,carousel_template_message)
                     else:
-                        message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著移動地址在試一次")
+                        message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         push_message(push_userid,message)
         #push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
