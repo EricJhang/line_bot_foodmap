@@ -171,7 +171,7 @@ def handle_lcationmessage(event):
             print("title:"+foodinfo['results'][i]['name'])
             print("title length :"+str(len(foodinfo['results'][i]['name'])))
             print("thumbnail_image_url :"+str(url_photo_flag))
-            print("label :"+foodinfo['results'][i]['vicinity']) 
+            print("label :"+foodinfo['results'][i]['vicinity'])
             print("label type:"+str(type(foodinfo['results'][i]['vicinity'])))
             print("label length :"+str(len(foodinfo['results'][i]['vicinity'])))
             print("address_url :"+address_url)
@@ -274,7 +274,7 @@ def handle_message(event):
                     print("title length :"+str(len(drink_json['results'][i]['name'])))
                     print("thumbnail_image_url :"+str(url_photo_flag))
                     print("label :"+drink_json['results'][i]['formatted_address'])
-                    print("label length :"+str(len(drink_json['results'][i]['formatted_address'])
+                    print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
                     print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     print("address_url :"+address_url)
                 if(i >=6): 
