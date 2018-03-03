@@ -89,12 +89,12 @@ def handle_lcationmessage(event):
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
-            actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+            actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions))          
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions_tmp))          
         if(i >=10): 
             i = len(foodinfo['results'])
             break            
