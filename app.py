@@ -50,7 +50,7 @@ def default(event):
         if (event.source.user_id in serch_location) == False:
             serch_location = {}
             serch_location[event.source.user_id]=event.source.user_id
-            if(event.postback.data != "other")
+            if(event.postback.data != "other"):
                 serch_location["search_kind"]=event.postback.data            
                 message = TextSendMessage(text= "請輸入想要搜尋的地址 範例 #地址,台北火車站")
             else:          
