@@ -167,7 +167,7 @@ def handle_message(event):
                 ]
             )
         )
-    #replay_message(event,message)
+        replay_message(event,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
     
