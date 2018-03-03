@@ -87,8 +87,6 @@ def handle_lcationmessage(event):
             #push_message(push_userid,message)
             #address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
-            thumbnail_image_url = url_photo
-            title = foodinfo['results'][i]['name']
             actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
