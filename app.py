@@ -198,6 +198,9 @@ def handle_message(event):
     #    print(e)
     #print(content)
 
+@handler.add(PostbackEvent, message=TextMessage)
+def post_event(event):
+    print(event)
         
 def replay_message(event,text):
     line_bot_api.reply_message(
