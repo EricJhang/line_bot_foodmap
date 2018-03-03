@@ -133,10 +133,12 @@ def handle_lcationmessage(event):
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #message_text = json.loads(event.message.text)
-    print(type(event.message.text))
-    print(type(message))
+    print(event)
     print(event.message.text)
     print(message)
+    print(event.message.id)
+    message_content = line_bot_api.get_message_content(event.message.id)
+    print(message_content)
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
