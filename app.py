@@ -100,7 +100,7 @@ def handle_lcationmessage(event):
         template=CarouselTemplate(columns)
     )
     print(type(carousel_template_message))
-    push_message(event,carousel_template_message)
+    push_message(push_userid,carousel_template_message)
     
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
