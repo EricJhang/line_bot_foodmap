@@ -41,7 +41,8 @@ def callback():
 
 @handler.default()
 def default(event):
-    print("enter default"+event)
+    print("enter default")
+    print(event)
 
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
