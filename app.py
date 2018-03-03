@@ -89,7 +89,7 @@ def handle_lcationmessage(event):
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
-            actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity']),text=foodinfo['results'][i]['vicinity']),
+            actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
                         uri=address_url
