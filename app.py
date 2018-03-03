@@ -92,13 +92,6 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-                    """
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
-                    URITemplateAction(
-                        label='位置',
-                        uri=address_url
-                    )]))
-            """
             columns_list=[CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
@@ -109,7 +102,7 @@ def handle_lcationmessage(event):
             break            
     carousel_template_message = TemplateSendMessage(
         alt_text='Carousel template',
-        template=CarouselTemplate(columns=columns_list)
+        template=CarouselTemplate(columns=[columns_list[0]])
     )
     print(columns_list)
     print(carousel_template_message)
