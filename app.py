@@ -85,10 +85,15 @@ def handle_lcationmessage(event):
             )
             #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
             #push_message(push_userid,message)
+            address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+foodinfo['results'][i]['geometry']['location']['lat']','+foodinfo['results'][i]['geometry']['location']['lng']
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
-            actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="地址",actions=actions))
+            actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity']),
+                    URITemplateAction(
+                        label='位置',
+                        uri=address_url
+                    )]
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="推薦指數:"+foodinfo['results'][i]['rating'],actions=actions))
                   
         if(i >=4): 
             i = len(foodinfo['results'])
