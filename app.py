@@ -137,6 +137,7 @@ def handle_lcationmessage(event):
             else :
                 url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
+            print(address_url)
             actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
@@ -263,20 +264,20 @@ def handle_message(event):
                     columns_list=[]
                     if(len(drink_json['results']) >= 1):
                         for i in range(len(drink_json['results'])):
-                            if ("vicinity" in drink_json['results'][i]) and ("name" in drink_json['results'][i]):
+                            if ("formatted_address" in drink_json['results'][i]) and ("name" in drink_json['results'][i]):
                                 if( 'photos' in drink_json['results'][i]):
                                     photo_reference_str = drink_json['results'][i]['photos'][0]['photo_reference']
                                     url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
                                 else :
                                     url_photo = ""
                                 address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
-                                actions_tmp=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text=drink_json['results'][i]['vicinity']),
+                                actions_tmp=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
                                         URITemplateAction(
                                             label='位置',
                                             uri=address_url
                                         )]
                                 if(url_photo!="") and('vicinity' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
-                                    columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['vicinity'],text=drink_json['results'][i]['vicinity']),
+                                    columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
                                             URITemplateAction(
                                                 label='位置',
                                                 uri=address_url
