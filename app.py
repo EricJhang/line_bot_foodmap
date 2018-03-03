@@ -170,8 +170,7 @@ def handle_lcationmessage(event):
                 template=CarouselTemplate(columns=[columns_list[0],
                 columns_list[1],
                 columns_list[2],
-                columns_list[3],
-                columns_list[4]])
+                columns_list[3]])
             )
         elif( len(columns_list) >=5 and len(columns_list) < 9):
             carousel_template_message = TemplateSendMessage(
@@ -288,12 +287,15 @@ def handle_message(event):
                                                     label='位置',
                                                     uri=address_url
                                                 )]))
-                            if(i >=4): 
+                            if(i >=6): 
                                 i = len(drink_json['results'])
                                 break        
                         carousel_template_message = TemplateSendMessage(
                             alt_text='Carousel template',
-                            template=CarouselTemplate(columns=columns_list)
+                            template=CarouselTemplate(columns=[columns_list[0],
+                            columns_list[1],
+                            columns_list[2],
+                            columns_list[3]])
                         )
                         #print(carousel_template_message)
                         push_message(push_userid,carousel_template_message)
