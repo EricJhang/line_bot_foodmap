@@ -60,6 +60,7 @@ def handle_lcationmessage(event):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
+    print(str(push_userid))    
     columns_list=[]
     if(len(foodinfo['results']) >= 1):
         for i in range(len(foodinfo['results'])):
@@ -68,18 +69,19 @@ def handle_lcationmessage(event):
                 url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
             else :
                 photo_reference_str = ""
-            req_photo = requests.get(url_photo,stream=True)
+            req_photo = requests.get(url_photo)
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
             actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
-                    URITemplateAction(
-                        label='位置',
-                        uri=address_url
-                    )]))
+            if(photo_reference_str!="") and('vicinity' in foodinfo['results'][i]):        
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                        URITemplateAction(
+                            label='位置',
+                            uri=address_url
+                        )]))
             if(i >=10): 
                 i = len(foodinfo['results'])
                 break            
