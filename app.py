@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage,TemplateSendMessage
 )
 import requests
 import json
@@ -60,7 +60,12 @@ def handle_lcationmessage(event):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
+    columns=[]
+    template=CarouselTemplate(columns)
     for i in range(len(foodinfo['results'])):
+        thumbnail_image_url =""
+        title=""
+        text=""
         if( 'photos' in foodinfo['results'][i]):
             photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
             url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
@@ -72,7 +77,7 @@ def handle_lcationmessage(event):
                 original_content_url=url_photo,
                 preview_image_url=url_photo
             )
-            push_message(push_userid,message_photo)
+            #push_message(push_userid,message_photo)
             message = LocationSendMessage(
                 title=foodinfo['results'][i]['name'],
                 address=foodinfo['results'][i]['vicinity'],
@@ -80,11 +85,21 @@ def handle_lcationmessage(event):
                 longitude=foodinfo['results'][i]['geometry']['location']['lng']
             )
             #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-            push_message(push_userid,message)
+            #push_message(push_userid,message)
+            thumbnail_image_url = url_photo
+            title = foodinfo['results'][i]['name']
+            actions=[MessageTemplateAction("地址",foodinfo['results'][i]['vicinity'])]
+            text ="餐廳"
+            CarouselColumn(thumbnail_image_url,title,text,actions)
+            columns.append(CarouselColumn)
         if(i >=4): 
             i = len(foodinfo['results'])
             break    
-    print(req.text)
+    carousel_template_message = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(columns)
+    )
+    push_message(event,carousel_template_message)
     
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
