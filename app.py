@@ -68,15 +68,14 @@ def handle_lcationmessage(event):
                 photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
                 url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
             else :
-                photo_reference_str = ""
-            req_photo = requests.get(url_photo)
+                url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
             actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
                         uri=address_url
                     )]
-            if(photo_reference_str!="") and('vicinity' in foodinfo['results'][i]):        
+            if(url_photo!="") and('vicinity' in foodinfo['results'][i]):        
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
@@ -132,48 +131,56 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    #message_text = json.loads(event.message.text)
+    message_text = json.loads(event)
     print(event)
     print(event.message.text)
     print(message)
-    print(event.message.id)
+    print(message_text['message']['id'])
     message_content = line_bot_api.get_message_content(event.message.id)
     print(message_content)
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
-    if(event.message.text == "#美食"):
+    tmp_count = 0    
+    if(event.message.text == "#搜尋"):      
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
             template=ButtonsTemplate(
+                thumbnail_image_url='https://api.reh.tw/line/bot/example/assets/images/example.jpg'
                 title='美食搜尋',
                 text='按此搜尋',
                 actions=[
                     PostbackTemplateAction(
                         label='餐廳',
-                        text='餐廳搜尋',
+                        text='#餐廳',
                         data='action=buy&itemid=1'
                     ),
                     PostbackTemplateAction(
                         label='飲料',
-                        text='飲料搜尋',
+                        text='#飲料',
                         data='action=buy&itemid=1'
                     ),
                     PostbackTemplateAction(
                         label='加油站',
-                        text='加油站搜尋',
+                        text='加油站',
                         data='action=buy&itemid=1'
                     ),
                     MessageTemplateAction(
                         label='message',
-                        text='message text'
+                        text=str(tmp_count)
                     )
                 ]
             )
         )
-        #replay_message(event,buttons_template_message)
-        push_message(push_userid,buttons_template_message)
+        tmp_count ++
+        replay_message(event,buttons_template_message)
+    elif(event.message.text == "#飲料"):
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/xml?query='+event.message.text'+in+'+"台北"+'&key='+googlekey
+        tmp_count ++
+        message = TextSendMessage(text= str(tmp_count))
+        replay_message(event,buttons_template_message)
+        #push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
     
