@@ -50,8 +50,11 @@ def default(event):
         if (event.source.user_id in serch_location) == False:
             serch_location = {}
             serch_location[event.source.user_id]=event.source.user_id
-            serch_location["search_kind"]=event.postback.data
-            message = TextSendMessage(text= "請輸入想要搜尋的地址 範例 #地址,台北火車站")
+            if(event.postback.data != "other")
+                serch_location["search_kind"]=event.postback.data            
+                message = TextSendMessage(text= "請輸入想要搜尋的地址 範例 #地址,台北火車站")
+            else:          
+                message = TextSendMessage(text= "請輸入想要搜尋的種類,地址 範例 #地址,日本料理,台北火車站")
             replay_message(event,message)
         elif((event.source.user_id in serch_location)):
             if(event.source.type == 'user'):
@@ -100,8 +103,11 @@ def default(event):
                         #print(carousel_template_message)
                         push_message(push_userid,carousel_template_message)
                     else:
-                        message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著移動地址在試一次")
+                        message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         push_message(push_userid,message)
+                else:
+                    message = TextSendMessage(text= "請輸入想要搜尋的地址 範例 #地址,台北火車站")
+                    replay_message(event,message)
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
@@ -334,6 +340,87 @@ def handle_message(event):
                     else:
                         message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         push_message(push_userid,message)
+            else:
+                search_kind_tmp = address_tmp = event.message.text.split(',')[1];
+                address_tmp = event.message.text.split(',')[2];
+                url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+'&key='+googlekey
+                print(event.message.text.split(','))
+                print(url)
+                req = requests.get(url)#發送請求
+                drink_json = json.loads(req.text) 
+                columns_list=[]
+                if(len(drink_json['results']) >= 1):
+                    for i in range(len(drink_json['results'])):
+                        if ("formatted_address" in drink_json['results'][i]) and ("name" in drink_json['results'][i]):
+                            if( 'photos' in drink_json['results'][i]):
+                                photo_reference_str = drink_json['results'][i]['photos'][0]['photo_reference']
+                                url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
+                            else :
+                                url_photo = ""
+                            address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
+                            actions_tmp=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
+                                    URITemplateAction(
+                                        label='位置',
+                                        uri=address_url
+                                    )]
+                            if(url_photo!="") and('formatted_address' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
+                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
+                                        URITemplateAction(
+                                            label='位置',
+                                            uri=address_url
+                                        )]))
+                            elif(url_photo!="") and ('name' in drink_json['results'][i]) :
+                                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
+                                            URITemplateAction(
+                                                label='位置',
+                                                uri=address_url
+                                            )]))
+                        if(i >=6): 
+                            i = len(drink_json['results'])
+                            break
+                    if(len(columns_list) >=5):            
+                        carousel_template_message = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(columns=[columns_list[0],
+                            columns_list[1],
+                            columns_list[2],
+                            columns_list[3],
+                            columns_list[4]])
+                        )
+                    elif(len(columns_list) == 4):
+                        carousel_template_message = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(columns=[columns_list[0],
+                            columns_list[1],
+                            columns_list[2],
+                            columns_list[3]])
+                        )
+                    elif(len(columns_list) == 3):
+                        carousel_template_message = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(columns=[columns_list[0],
+                            columns_list[1],
+                            columns_list[2]])
+                        )
+                    elif(len(columns_list) == 2):
+                        carousel_template_message = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(columns=[columns_list[0],
+                            columns_list[1]])
+                        )
+                    elif(len(columns_list) == 1):
+                        carousel_template_message = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(columns=[columns_list[0]])
+                        )
+                    else:
+                        carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
+                    #print(carousel_template_message)
+                    push_message(push_userid,carousel_template_message)
+                    serch_location = []
+                else:
+                    message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
+                    push_message(push_userid,message)
         #push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
