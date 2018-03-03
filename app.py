@@ -123,8 +123,8 @@ def handle_lcationmessage(event):
             carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
         print(columns_list)
         #print(carousel_template_message)
-        #push_message(push_userid,carousel_template_message)
-        replay_message(event,carousel_template_message)
+        push_message(push_userid,carousel_template_message)
+        #replay_message(event,carousel_template_message)
     else:
         message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
         push_message(push_userid,message)
@@ -137,6 +137,10 @@ def handle_message(event):
     print(type(message))
     print(event.message.text)
     print(message)
+    if(event.source.type == 'user'):
+        push_userid = event.source.user_id
+    elif(event.source.type == 'group'):
+        push_userid = event.source.group_id
     if(event.message.text == "#美食"):
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
@@ -167,7 +171,8 @@ def handle_message(event):
                 ]
             )
         )
-        replay_message(event,buttons_template_message)
+        #replay_message(event,buttons_template_message)
+        push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
     
