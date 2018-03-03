@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage,TemplateSendMessage
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage,TemplateSendMessage,CarouselTemplate,CarouselColumn,MessageTemplateAction
 )
 import requests
 import json
@@ -61,7 +61,6 @@ def handle_lcationmessage(event):
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
     columns=[]
-    template=CarouselTemplate(columns)
     for i in range(len(foodinfo['results'])):
         thumbnail_image_url =""
         title=""
