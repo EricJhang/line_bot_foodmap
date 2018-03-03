@@ -173,11 +173,11 @@ def handle_message(event):
                 ]
             )
         )
-        tmp_count ++
+        tmp_count += 1
         replay_message(event,buttons_template_message)
     elif(event.message.text == "#飲料"):
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/xml?query='+event.message.text'+in+'+"台北"+'&key='+googlekey
-        tmp_count ++
+        tmp_count += 1
         message = TextSendMessage(text= str(tmp_count))
         replay_message(event,buttons_template_message)
         #push_message(push_userid,buttons_template_message)
