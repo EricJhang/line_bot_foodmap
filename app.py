@@ -82,12 +82,20 @@ def handle_lcationmessage(event):
                             label='位置',
                             uri=address_url
                         )]))
-            if(i >=10): 
+            if(i >=15): 
                 i = len(foodinfo['results'])
                 break            
         carousel_template_message = TemplateSendMessage(
             alt_text='Carousel template',
-            template=CarouselTemplate(columns=columns_list[:])
+            template=CarouselTemplate(columns=[columns_list[0],
+            columns_list[1],
+            columns_list[2],
+            columns_list[3],
+            columns_list[4],
+            columns_list[5],
+            columns_list[6],
+            columns_list[7],
+            columns_list[8])
         )
         print(columns_list)
         #print(carousel_template_message)
