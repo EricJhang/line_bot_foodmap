@@ -170,7 +170,8 @@ def handle_lcationmessage(event):
                             )]))
             print("title:"+foodinfo['results'][i]['name'])
             print("thumbnail_image_url :"+str(url_photo_flag))
-            print("label :"+foodinfo['results'][i]['vicinity'])   
+            print("label :"+foodinfo['results'][i]['vicinity']) 
+            print("label type:"+str(type(foodinfo['results'][i]['vicinity'])))
             if(i >=9): 
                 i = len(foodinfo['results'])
                 break
@@ -223,13 +224,14 @@ def handle_message(event):
     print(event.message.text)
     print(message)
     global tmp_count
+    url_photo_flag = True
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id   
     if(event.message.text == "#搜尋") or (event.message.text == "#找餐廳"):      
         message = TextSendMessage(text= "請輸入格式 #搜尋,搜尋種類,搜尋地址\n範例說明: #搜尋,飲料,台北車站")
-        replay_message(event,buttons_template_message)
+        replay_message(event,message)
     elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ):
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
@@ -247,24 +249,28 @@ def handle_message(event):
                         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
                     else :
                         url_photo = ""
+                    req_photo = requests.get(url_photo)
+                    if(req_photo.status_code == 200):
+                        url_photo_flag =True
+                    else:
+                        url_photo_flag = False    
                     address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
-                    actions_tmp=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
-                            URITemplateAction(
-                                label='位置',
-                                uri=address_url
-                            )]
-                    if(url_photo!="") and('formatted_address' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
+                    if(url_photo_flag) and('formatted_address' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
                         columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
                                 URITemplateAction(
                                     label='位置',
                                     uri=address_url
                                 )]))
-                    elif(url_photo!="") and ('name' in drink_json['results'][i]) :
+                    elif(url_photo_flag) and ('name' in drink_json['results'][i]) :
                         columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
                                     URITemplateAction(
                                         label='位置',
                                         uri=address_url
                                     )]))
+                    print("title:"+drink_json['results'][i]['name'])
+                    print("thumbnail_image_url :"+str(url_photo_flag))
+                    print("label :"+drink_json['results'][i]['formatted_address']) 
+                    print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))                
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
