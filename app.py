@@ -185,7 +185,7 @@ def handle_message(event):
         tmp_count += 1
         replay_message(event,buttons_template_message)
     elif(event.message.text == "#飲料"):
-        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+event.message.text+'+in+'+'台北'+'&key='+googlekey
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+'飲料'+'+in+'+'台北'+'&key='+googlekey
         print(url)
         tmp_count += 1
         req = requests.get(url)#發送請求
