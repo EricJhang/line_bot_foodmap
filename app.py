@@ -20,7 +20,7 @@ line_bot_api = LineBotApi(os.environ["linetoken"])
 handler = WebhookHandler(os.environ["linechannel"])
 
 googlekey = os.environ["googlePreminkey"]
-
+tmp_count = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -43,6 +43,8 @@ def callback():
 def default(event):
     print("enter default")
     print(event)
+    print("tmp_count :"+tmp_count)
+    tmp_count += 1
 
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
@@ -146,8 +148,7 @@ def handle_message(event):
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
-        push_userid = event.source.group_id
-    tmp_count = 0    
+        push_userid = event.source.group_id   
     if(event.message.text == "#搜尋"):      
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
@@ -199,7 +200,7 @@ def handle_message(event):
     #    print(e)
     #print(content)
 
-@handler.add(PostbackEvent, message=TextMessage)
+@handler.add(PostbackEvent, Event=PostbackEvent)
 def post_event(event):
     print("enter postback")
     print(event)
