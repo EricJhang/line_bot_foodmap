@@ -92,7 +92,7 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=actions_tmp))
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions_tmp))
         if(i >=10): 
             i = len(foodinfo['results'])
             break            
