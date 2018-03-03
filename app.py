@@ -85,10 +85,11 @@ def handle_lcationmessage(event):
             )
             #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
             #push_message(push_userid,message)
-            address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])
+            #address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])
+            address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])'&query_place_id='+str(foodinfo['results'][i]['place_id']
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
-            actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity']),
+            actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity']),text=foodinfo['results'][i]['vicinity']),
                     URITemplateAction(
                         label='位置',
                         uri=address_url
