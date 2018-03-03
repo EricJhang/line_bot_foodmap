@@ -133,8 +133,8 @@ def handle_lcationmessage(event):
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #message_text = json.loads(event.message.text)
-    print("event.message.text type:"+type(event.message.text))
-    print("message type :"+type(message))
+    print(type(event.message.text))
+    print(type(message))
     print(event.message.text)
     print(message)
     if(event.message.text == "#美食"):
