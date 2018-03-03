@@ -62,6 +62,7 @@ def handle_lcationmessage(event):
         push_userid = event.source.group_id
     print(str(push_userid))    
     columns_list=[]
+    print(foodinfo)
     if(len(foodinfo['results']) >= 1):
         for i in range(len(foodinfo['results'])):
             if( 'photos' in foodinfo['results'][i]):
@@ -75,7 +76,7 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            if(url_photo!="") and('rating'' in foodinfo['results'][i]):        
+            if(url_photo!="") and('rating' in foodinfo['results'][i]):        
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
