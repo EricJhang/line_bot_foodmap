@@ -75,12 +75,18 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            if(url_photo!="") and('vicinity' in foodinfo['results'][i]):        
+            if(url_photo!="") and('rating'' in foodinfo['results'][i]):        
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
                             uri=address_url
                         )]))
+            elif(url_photo!=""):
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                            URITemplateAction(
+                                label='位置',
+                                uri=address_url
+                            )]))
             if(i >=15): 
                 i = len(foodinfo['results'])
                 break
@@ -131,7 +137,6 @@ def handle_lcationmessage(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    message_text = json.loads(event)
     print(event)
     print(event.message.text)
     print(message)
