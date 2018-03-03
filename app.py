@@ -106,12 +106,13 @@ def handle_lcationmessage(event):
             )
         )
     push_message(push_userid,carousel_template_message)
-    print(req.text)    
+    #print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    if(message == "#美食"):
-        None
+    print(message)
+    #if(message == "#美食"):
+    #    None
     #replay_message(event,message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
