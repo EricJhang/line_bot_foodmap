@@ -300,7 +300,7 @@ def handle_message(event):
                                 columns_list[3],
                                 columns_list[4]])
                             )
-                        elif(len(columns_list) = 4):
+                        elif(len(columns_list) == 4):
                             carousel_template_message = TemplateSendMessage(
                                 alt_text='Carousel template',
                                 template=CarouselTemplate(columns=[columns_list[0],
@@ -308,20 +308,20 @@ def handle_message(event):
                                 columns_list[2],
                                 columns_list[3]])
                             )
-                        elif(len(columns_list) = 3):
+                        elif(len(columns_list) == 3):
                             carousel_template_message = TemplateSendMessage(
                                 alt_text='Carousel template',
                                 template=CarouselTemplate(columns=[columns_list[0],
                                 columns_list[1],
                                 columns_list[2]])
                             )
-                        elif(len(columns_list) = 2):
+                        elif(len(columns_list) == 2):
                             carousel_template_message = TemplateSendMessage(
                                 alt_text='Carousel template',
                                 template=CarouselTemplate(columns=[columns_list[0],
                                 columns_list[1]])
                             )
-                        elif(len(columns_list) = 1):
+                        elif(len(columns_list) == 1):
                             carousel_template_message = TemplateSendMessage(
                                 alt_text='Carousel template',
                                 template=CarouselTemplate(columns=[columns_list[0]])
