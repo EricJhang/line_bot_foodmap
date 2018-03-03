@@ -183,7 +183,7 @@ def handle_message(event):
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/xml?query='+event.message.text+'+in+'+"台北"+'&key='+googlekey
         tmp_count += 1
         message = TextSendMessage(text= str(tmp_count))
-        replay_message(event,buttons_template_message)
+        replay_message(event,message)
         #push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
@@ -200,6 +200,7 @@ def handle_message(event):
 
 @handler.add(PostbackEvent, message=TextMessage)
 def post_event(event):
+    print("enter postback")
     print(event)
         
 def replay_message(event,text):
