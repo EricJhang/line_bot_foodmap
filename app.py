@@ -76,13 +76,13 @@ def handle_lcationmessage(event):
                         label='位置',
                         uri=address_url
                     )]
-            if(url_photo!="") and('rating' in foodinfo['results'][i]):        
+            if(url_photo!="") and('rating' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
                             uri=address_url
                         )]))
-            elif(url_photo!=""):
+            elif(url_photo!="") and ('name' in foodinfo['results'][i]) :
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                             URITemplateAction(
                                 label='位置',
@@ -141,7 +141,6 @@ def handle_message(event):
     print(event)
     print(event.message.text)
     print(message)
-    message_content = line_bot_api.get_message_content(event.message.id)
     print(message_content)
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
