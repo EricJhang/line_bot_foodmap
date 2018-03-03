@@ -170,7 +170,7 @@ def handle_lcationmessage(event):
                             )]))
             print("title:"+foodinfo['results'][i]['name'])
             print("thumbnail_image_url :"+str(url_photo_flag))
-            print("label :"+str(url_photo_flag))   
+            print("label :"+foodinfo['results'][i]['vicinity'])   
             if(i >=9): 
                 i = len(foodinfo['results'])
                 break
