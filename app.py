@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage,TemplateSendMessage,CarouselTemplate,CarouselColumn,MessageTemplateAction
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,LocationMessage,LocationSendMessage,TemplateSendMessage,CarouselTemplate,CarouselColumn,MessageTemplateAction,PostbackTemplateAction,URITemplateAction
 )
 import requests
 import json
@@ -90,7 +90,7 @@ def handle_lcationmessage(event):
             title = foodinfo['results'][i]['name']
             actions=[PostbackTemplateAction('postback1','postback text1','action=buy&itemid=1'),MessageTemplateAction("地址",foodinfo['results'][i]['vicinity']),URITemplateAction("","")]
             text ="餐廳"
-            CarouselColumn(thumbnail_image_url,title,text,actions)
+            CarouselColumn(thumbnail_image_url,title,text)
             columns.append(CarouselColumn)
         if(i >=4): 
             i = len(foodinfo['results'])    
