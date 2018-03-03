@@ -92,7 +92,7 @@ def handle_lcationmessage(event):
                 i = len(foodinfo['results'])
                 break
         print(str(len(columns_list)))        
-        if(len(columns_list) >=9) and False:        
+        if(len(columns_list) >=9) :        
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -105,7 +105,7 @@ def handle_lcationmessage(event):
                 columns_list[7],
                 columns_list[8]])
             )
-        elif( len(columns_list) >=5 and len(columns_list) < 9) and False:
+        elif( len(columns_list) >=5 and len(columns_list) < 9):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -114,7 +114,7 @@ def handle_lcationmessage(event):
                 columns_list[3],
                 columns_list[4]])
             )
-        elif( len(columns_list) >=3 and len(columns_list) < 5) and False:
+        elif( len(columns_list) >=3 and len(columns_list) < 5):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -122,11 +122,6 @@ def handle_lcationmessage(event):
                 columns_list[2]])
             )
         elif( len(columns_list) >=1 and len(columns_list) < 3):
-            carousel_template_message = TemplateSendMessage(
-                alt_text='Carousel template',
-                template=CarouselTemplate(columns=[columns_list[0]])
-            )
-        elif(True):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0]])
