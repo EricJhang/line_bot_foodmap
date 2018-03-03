@@ -87,7 +87,7 @@ def handle_lcationmessage(event):
                 break            
         carousel_template_message = TemplateSendMessage(
             alt_text='Carousel template',
-            template=CarouselTemplate(columns=columns_list)
+            template=CarouselTemplate(columns=[columns_list[0]])
         )
         print(columns_list)
         #print(carousel_template_message)
