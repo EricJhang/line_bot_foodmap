@@ -61,52 +61,55 @@ def handle_lcationmessage(event):
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
     columns_list=[]
-    for i in range(len(foodinfo['results'])):
-        thumbnail_image_url =""
-        title=""
-        text=""
-        if( 'photos' in foodinfo['results'][i]):
-            photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
-            url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
-        else :
-            photo_reference_str = ""
-        if(foodinfo['results'][i]['rating'] >= 3.5):
-            req_photo = requests.get(url_photo,stream=True)
-            message_photo = ImageSendMessage(
-                original_content_url=url_photo,
-                preview_image_url=url_photo
-            )
-            #push_message(push_userid,message_photo)
-            message = LocationSendMessage(
-                title=foodinfo['results'][i]['name'],
-                address=foodinfo['results'][i]['vicinity'],
-                latitude=foodinfo['results'][i]['geometry']['location']['lat'],
-                longitude=foodinfo['results'][i]['geometry']['location']['lng']
-            )
-            #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
-            #push_message(push_userid,message)
-            #address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])
-            address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
-            actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
-                    URITemplateAction(
-                        label='位置',
-                        uri=address_url
-                    )]
-            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
-                    URITemplateAction(
-                        label='位置',
-                        uri=address_url
-                    )]))
-        if(i >=10): 
-            i = len(foodinfo['results'])
-            break            
-    carousel_template_message = TemplateSendMessage(
-        alt_text='Carousel template',
-        template=CarouselTemplate(columns=columns_list)
-    )
-    print(columns_list)
-    print(carousel_template_message)
-    push_message(push_userid,carousel_template_message)
+    if(len(foodinfo['results']) >= 1):
+        for i in range(len(foodinfo['results'])):
+            thumbnail_image_url =""
+            title=""
+            text=""
+            if( 'photos' in foodinfo['results'][i]):
+                photo_reference_str = foodinfo['results'][i]['photos'][0]['photo_reference']
+                url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
+            else :
+                photo_reference_str = ""
+            if(foodinfo['results'][i]['rating'] >= 3.5):
+                req_photo = requests.get(url_photo,stream=True)
+                message_photo = ImageSendMessage(
+                    original_content_url=url_photo,
+                    preview_image_url=url_photo
+                )
+                #push_message(push_userid,message_photo)
+                message = LocationSendMessage(
+                    title=foodinfo['results'][i]['name'],
+                    address=foodinfo['results'][i]['vicinity'],
+                    latitude=foodinfo['results'][i]['geometry']['location']['lat'],
+                    longitude=foodinfo['results'][i]['geometry']['location']['lng']
+                )
+                #message = str(foodinfo['results'][i]["name"])+"分數:"+str(foodinfo['results'][i]["rating"])+"\n"+message
+                #push_message(push_userid,message)
+                #address_url = 'https://www.google.com/maps/@?api=1&map_action=map&center='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])
+                address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
+                actions_tmp=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                        URITemplateAction(
+                            label='位置',
+                            uri=address_url
+                        )]
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                        URITemplateAction(
+                            label='位置',
+                            uri=address_url
+                        )]))
+            if(i >=10): 
+                i = len(foodinfo['results'])
+                break            
+        carousel_template_message = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(columns=columns_list)
+        )
+        print(columns_list)
+        print(carousel_template_message)
+        push_message(push_userid,carousel_template_message)
+    else:
+        push_message(push_userid,"抱歉該位置附近沒有餐廳唷")
     #print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
