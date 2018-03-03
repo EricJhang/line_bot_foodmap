@@ -85,7 +85,7 @@ def handle_lcationmessage(event):
             if(i >=15): 
                 i = len(foodinfo['results'])
                 break
-        if(len(columns_list) > 9):        
+        if(len(columns_list) >=9):        
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
@@ -120,13 +120,13 @@ def handle_lcationmessage(event):
                 template=CarouselTemplate(columns=[columns_list[0]])
             )
         else:
-            carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
+            carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷，可以試著移動地址在試一次")
         print(columns_list)
         #print(carousel_template_message)
         push_message(push_userid,carousel_template_message)
         #replay_message(event,carousel_template_message)
     else:
-        message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
+        message = TextSendMessage(text= "抱抱歉該位置附近沒有餐廳唷，可以試著移動地址在試一次")
         push_message(push_userid,message)
     #print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
@@ -145,7 +145,6 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
             template=ButtonsTemplate(
-                thumbnail_image_url='',
                 title='美食搜尋',
                 text='按此搜尋',
                 actions=[
