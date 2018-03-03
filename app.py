@@ -157,7 +157,7 @@ def handle_lcationmessage(event):
                             uri=address_url
                         )]))
             elif(url_photo_flag) and ('name' in foodinfo['results'][i]) :
-                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text="無法顯示地址"),
                             URITemplateAction(
                                 label='位置',
                                 uri=address_url
@@ -169,9 +169,12 @@ def handle_lcationmessage(event):
                                 uri=address_url
                             )]))
             print("title:"+foodinfo['results'][i]['name'])
+            print("title length :"+str(len(foodinfo['results'][i]['name'])))
             print("thumbnail_image_url :"+str(url_photo_flag))
             print("label :"+foodinfo['results'][i]['vicinity']) 
             print("label type:"+str(type(foodinfo['results'][i]['vicinity'])))
+            print("label length :"+str(len(foodinfo['results'][i]['vicinity'])))
+            print("address_url :"+address_url)
             if(i >=9): 
                 i = len(foodinfo['results'])
                 break
@@ -268,9 +271,12 @@ def handle_message(event):
                                         uri=address_url
                                     )]))
                     print("title:"+drink_json['results'][i]['name'])
+                    print("title length :"+str(len(drink_json['results'][i]['name'])))
                     print("thumbnail_image_url :"+str(url_photo_flag))
-                    print("label :"+drink_json['results'][i]['formatted_address']) 
-                    print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))                
+                    print("label :"+drink_json['results'][i]['formatted_address'])
+                    print("label length :"+str(len(drink_json['results'][i]['formatted_address'])
+                    print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
+                    print("address_url :"+address_url)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
