@@ -88,13 +88,12 @@ def handle_lcationmessage(event):
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
             actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
-            columns_list.append(CarouselColumn(thumbnail_image_url,title ,"地址",actions))
+            columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="地址",actions=actions))
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="地址",actions=actions)
-                        ]
+                        columns=columns_list
+                        
                 )
             )
             push_message(push_userid,carousel_template_message)            
