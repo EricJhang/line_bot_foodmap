@@ -45,7 +45,7 @@ def default(event):
     print(event)
     print("tmp_count :"+tmp_count)
     tmp_count += 1
-
+    print(type(event))
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
@@ -184,6 +184,9 @@ def handle_message(event):
     elif(event.message.text == "#飲料"):
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/xml?query='+event.message.text+'+in+'+"台北"+'&key='+googlekey
         tmp_count += 1
+        req = requests.get(url)#發送請求
+        drink_json = json.loads(req.text)
+        print(drink_json)
         message = TextSendMessage(text= str(tmp_count))
         replay_message(event,message)
         #push_message(push_userid,buttons_template_message)
@@ -200,10 +203,6 @@ def handle_message(event):
     #    print(e)
     #print(content)
 
-@handler.add(PostbackEvent, Event=PostbackEvent)
-def post_event(event):
-    print("enter postback")
-    print(event)
         
 def replay_message(event,text):
     line_bot_api.reply_message(
