@@ -52,7 +52,7 @@ def default(event):
             serch_location[event.source.user_id]=event.source.user_id
             serch_location["search_kind"]=event.postback.data
             message = TextSendMessage(text= "請輸入想要搜尋的地址 範例 #地址,台北火車站")
-            replay_message(event,carousel_template_message)
+            replay_message(event,message)
         elif((event.source.user_id in serch_location)):
             if(event.source.type == 'user'):
                 push_userid = event.source.user_id
@@ -90,7 +90,7 @@ def default(event):
                                                 label='位置',
                                                 uri=address_url
                                             )]))
-                            if(i >=5): 
+                            if(i >=4): 
                                 i = len(drink_json['results'])
                                 break        
                         carousel_template_message = TemplateSendMessage(
