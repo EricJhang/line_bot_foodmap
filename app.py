@@ -117,7 +117,7 @@ def handle_lcationmessage(event):
         elif( len(columns_list) >=1 and len(columns_list) < 3):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
-                template=CarouselTemplate(columns=[columns_list[0])
+                template=CarouselTemplate(columns=[columns_list[0]])
             )
         else:
             carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
