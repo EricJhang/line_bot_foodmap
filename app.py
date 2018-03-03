@@ -46,9 +46,9 @@ def default(event):
     print("enter default")
     print(event)
     print(event.postback)
-    print(event.text)
+    print(event.type)
     print(type(event))
-    
+
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
@@ -165,8 +165,7 @@ def handle_message(event):
                     PostbackTemplateAction(
                         label='餐廳',
                         text='#餐廳',
-                        data=event.source.user_id,
-                        params='餐廳'
+                        data=event.source.user_id
                     ),
                     PostbackTemplateAction(
                         label='飲料',
