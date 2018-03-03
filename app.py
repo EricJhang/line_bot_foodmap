@@ -89,26 +89,18 @@ def handle_lcationmessage(event):
             title = foodinfo['results'][i]['name']
             actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
             columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'] ,text="地址",actions=actions))
-            carousel_template_message = TemplateSendMessage(
-                alt_text='Carousel template',
-                template=CarouselTemplate(
-                        columns=columns_list
-                        
-                )
-            )
-            push_message(push_userid,carousel_template_message)            
+                  
         if(i >=4): 
             i = len(foodinfo['results'])
             break            
-    """            
     carousel_template_message = TemplateSendMessage(
-        alt_text='Carousel template',
-        template=CarouselTemplate(columns)
-    )
-    print(columns)
-    print(carousel_template_message)    
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                    columns=columns_list                        
+            )
+        )
     push_message(push_userid,carousel_template_message)
-    """
+    print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
