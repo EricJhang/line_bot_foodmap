@@ -147,7 +147,7 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://api.reh.tw/line/bot/example/assets/images/example.jpg'
+                thumbnail_image_url='https://api.reh.tw/line/bot/example/assets/images/example.jpg',
                 title='美食搜尋',
                 text='按此搜尋',
                 actions=[
