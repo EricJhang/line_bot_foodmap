@@ -21,7 +21,7 @@ handler = WebhookHandler(os.environ["linechannel"])
 
 googlekey = os.environ["googlePreminkey"]
 tmp_count = 0
-serch_location = []
+serch_location = {}
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -45,9 +45,10 @@ def default(event):
     global tmp_count
     print("enter default")
     print(event)
-    print("tmp_count :"+str(tmp_count))
-    tmp_count += 1
+    print(event.postback)
+    print(event.text)
     print(type(event))
+    
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
     print("call handle_lcationmessage sucess")
@@ -143,6 +144,7 @@ def handle_lcationmessage(event):
     #print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global serch_location
     message = TextSendMessage(text=event.message.text)
     print(event)
     print(event.message.text)
@@ -163,28 +165,32 @@ def handle_message(event):
                     PostbackTemplateAction(
                         label='餐廳',
                         text='#餐廳',
-                        data='action=buy&itemid=1'
+                        data=event.source.user_id,
+                        params='餐廳'
                     ),
                     PostbackTemplateAction(
                         label='飲料',
                         text='#飲料',
-                        data='action=buy&itemid=1'
+                        data=event.source.user_id,
+                        params='飲料'
                     ),
                     PostbackTemplateAction(
-                        label='加油站',
-                        text='加油站',
-                        data='action=buy&itemid=1'
+                        label='火鍋',
+                        text='#火鍋',
+                        data=event.source.user_id,
+                        params='加油站'
                     ),
-                    MessageTemplateAction(
-                        label='message',
-                        text=str(tmp_count)
+                    PostbackTemplateAction(
+                        label='自行輸入種類',
+                        data=event.source.user_id,
+                        params='other'
                     )
                 ]
             )
         )
         tmp_count += 1
         replay_message(event,buttons_template_message)
-    elif(event.message.text == "#飲料"):
+    elif(event.message.text == "#飲料"): 
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+'飲料'+'+in+'+'台北'+'&key='+googlekey
         print(url)
         tmp_count += 1
