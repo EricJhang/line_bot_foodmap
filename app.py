@@ -92,7 +92,7 @@ def handle_lcationmessage(event):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(
-                            columns=columns_list
+                            columns=[CarouselColumn(thumbnail_image_url,title ,"地址",actions)]
                 )
             )
             push_message(push_userid,carousel_template_message)            
