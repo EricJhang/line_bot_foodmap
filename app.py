@@ -163,7 +163,7 @@ def handle_lcationmessage(event):
                                 uri=address_url
                             )]))
             else:
-                columns_list.append(CarouselColumn(,title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
+                columns_list.append(CarouselColumn(title = foodinfo['results'][i]['name'],text="沒有推薦資料",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
                             URITemplateAction(
                                 label='位置',
                                 uri=address_url
@@ -181,7 +181,8 @@ def handle_lcationmessage(event):
                 template=CarouselTemplate(columns=[columns_list[0],
                 columns_list[1],
                 columns_list[2],
-                columns_list[3]])
+                columns_list[3],
+                columns_list[4]])
             )
         elif( len(columns_list) >=5 and len(columns_list) < 9):
             carousel_template_message = TemplateSendMessage(
