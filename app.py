@@ -77,7 +77,7 @@ def handle_lcationmessage(event):
                         uri=address_url
                     )]
             if(url_photo!="") and('rating' in foodinfo['results'][i]) and ('name' in foodinfo['results'][i]):
-                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating']),actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
                             uri=address_url
@@ -122,6 +122,11 @@ def handle_lcationmessage(event):
                 columns_list[2]])
             )
         elif( len(columns_list) >=1 and len(columns_list) < 3):
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=[columns_list[0]])
+            )
+        elif(True):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0]])
