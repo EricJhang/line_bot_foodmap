@@ -84,19 +84,43 @@ def handle_lcationmessage(event):
                         )]))
             if(i >=15): 
                 i = len(foodinfo['results'])
-                break            
-        carousel_template_message = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(columns=[columns_list[0],
-            columns_list[1],
-            columns_list[2],
-            columns_list[3],
-            columns_list[4],
-            columns_list[5],
-            columns_list[6],
-            columns_list[7],
-            columns_list[8])
-        )
+                break
+        if(len(columns_list) > 9):        
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=[columns_list[0],
+                columns_list[1],
+                columns_list[2],
+                columns_list[3],
+                columns_list[4],
+                columns_list[5],
+                columns_list[6],
+                columns_list[7],
+                columns_list[8]])
+            )
+        elif( len(columns_list) >=5 and len(columns_list) < 9):
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=[columns_list[0],
+                columns_list[1],
+                columns_list[2],
+                columns_list[3],
+                columns_list[4],)
+            )
+        elif( len(columns_list) >=3 and len(columns_list) < 5):
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=[columns_list[0],
+                columns_list[1],
+                columns_list[2])
+            )
+        elif( len(columns_list) >=1 and len(columns_list) < 3):
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=[columns_list[0])
+            )
+        else:
+            carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷")
         print(columns_list)
         #print(carousel_template_message)
         #push_message(push_userid,carousel_template_message)
