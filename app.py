@@ -290,14 +290,44 @@ def handle_message(event):
                                                 )]))
                             if(i >=6): 
                                 i = len(drink_json['results'])
-                                break        
-                        carousel_template_message = TemplateSendMessage(
-                            alt_text='Carousel template',
-                            template=CarouselTemplate(columns=[columns_list[0],
-                            columns_list[1],
-                            columns_list[2],
-                            columns_list[3]])
-                        )
+                                break
+                        if(len(columns_list) >=5):            
+                            carousel_template_message = TemplateSendMessage(
+                                alt_text='Carousel template',
+                                template=CarouselTemplate(columns=[columns_list[0],
+                                columns_list[1],
+                                columns_list[2],
+                                columns_list[3],
+                                columns_list[4]])
+                            )
+                        elif(len(columns_list) = 4):
+                            carousel_template_message = TemplateSendMessage(
+                                alt_text='Carousel template',
+                                template=CarouselTemplate(columns=[columns_list[0],
+                                columns_list[1],
+                                columns_list[2],
+                                columns_list[3]])
+                            )
+                        elif(len(columns_list) = 3):
+                            carousel_template_message = TemplateSendMessage(
+                                alt_text='Carousel template',
+                                template=CarouselTemplate(columns=[columns_list[0],
+                                columns_list[1],
+                                columns_list[2]])
+                            )
+                        elif(len(columns_list) = 2):
+                            carousel_template_message = TemplateSendMessage(
+                                alt_text='Carousel template',
+                                template=CarouselTemplate(columns=[columns_list[0],
+                                columns_list[1]])
+                            )
+                        elif(len(columns_list) = 1):
+                            carousel_template_message = TemplateSendMessage(
+                                alt_text='Carousel template',
+                                template=CarouselTemplate(columns=[columns_list[0]])
+                            )
+                        else:
+                            carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         #print(carousel_template_message)
                         push_message(push_userid,carousel_template_message)
                         serch_location = []
