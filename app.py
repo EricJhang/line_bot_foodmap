@@ -41,6 +41,7 @@ def callback():
 
 @handler.default()
 def default(event):
+    global tmp_count
     print("enter default")
     print(event)
     print("tmp_count :"+tmp_count)
@@ -145,11 +146,12 @@ def handle_message(event):
     print(event)
     print(event.message.text)
     print(message)
+    global tmp_count
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id   
-    if(event.message.text == "#搜尋"):      
+    if(event.message.text == "#搜尋") or (event.message.text == "#找餐廳"):      
         buttons_template_message = TemplateSendMessage(
             alt_text='搜尋附近美食',
             template=ButtonsTemplate(
