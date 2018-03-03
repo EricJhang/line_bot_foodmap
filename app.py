@@ -105,14 +105,14 @@ def handle_lcationmessage(event):
                 columns_list[1],
                 columns_list[2],
                 columns_list[3],
-                columns_list[4],)
+                columns_list[4]])
             )
         elif( len(columns_list) >=3 and len(columns_list) < 5):
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
                 template=CarouselTemplate(columns=[columns_list[0],
                 columns_list[1],
-                columns_list[2])
+                columns_list[2]])
             )
         elif( len(columns_list) >=1 and len(columns_list) < 3):
             carousel_template_message = TemplateSendMessage(
