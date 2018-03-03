@@ -87,11 +87,8 @@ def handle_lcationmessage(event):
             #push_message(push_userid,message)
             thumbnail_image_url = url_photo
             title = foodinfo['results'][i]['name']
-            actions=[PostbackTemplateAction('postback1','postback text1','action=buy&itemid=1'),MessageTemplateAction("地址",foodinfo['results'][i]['vicinity']),URITemplateAction("","")]
-            text ="餐廳"
-            CarouselColumn(thumbnail_image_url,title,text)
-            #columns.append(CarouselColumn)
-            columns=[CarouselColumn,CarouselColumn,CarouselColumn]
+            actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity'])]
+            columns.append(CarouselColumn(thumbnail_image_url,title ,text,actions))
         if(i >=4): 
             i = len(foodinfo['results'])
             
