@@ -266,20 +266,20 @@ def handle_message(event):
                         )
                     )
                     carousel_template_message = TemplateSendMessage(
-                        alt_text='Drink carousel ',
+                        alt_text='Drink carousel',
                         template=CarouselTemplate(
                             columns=[
                                 CarouselColumn(
                                     thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
-                                    title=drink_json['results'][i]['name'],
-                                    text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                                    title="123",
+                                    text="456",
                                     actions=[
                                         MessageTemplateAction(
-                                            label=drink_json['results'][i]['formatted_address'],
-                                            text=drink_json['results'][i]['formatted_address']
+                                            label="test",
+                                            text="test"
                                         ),
                                         URITemplateAction(
-                                            label='位置',
+                                            label="test",
                                             uri='https://i.imgur.com/qKkE2bj.jpg'
                                         )
                                     ]
