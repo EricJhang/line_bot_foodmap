@@ -243,7 +243,7 @@ def handle_message(event):
                     #print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
                     #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     #print("address_url :"+address_url)
-                     buttons_template = TemplateSendMessage(
+                    buttons_template = TemplateSendMessage(
                         alt_text='正妹 template',
                         template=ButtonsTemplate(
                             title='選擇服務',
