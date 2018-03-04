@@ -494,7 +494,9 @@ def FullToHalf(s):
         elif (num >= 65281 and num <= 65374): 
             num -= 65248
             num = chr(num) 
-            n.append(num) 
+            n.append(num)
+        else:
+            n.append(num)
     return ''.join(n) 
 
 """
