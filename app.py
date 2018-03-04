@@ -230,7 +230,7 @@ def handle_message(event):
                 if ("formatted_address" in drink_json['results'][i]) and ("name" in drink_json['results'][i]):
                     if( 'photos' in drink_json['results'][i]):
                         photo_reference_str = drink_json['results'][i]['photos'][0]['photo_reference']
-                        url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
+                        url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference="+photo_reference_str+"&key="+googlekey
                     else :
                         url_photo = ""  
                     address_url = "https://www.google.com/maps/search/?api=1&query="+str(drink_json['results'][i]['geometry']['location']['lat'])+","+str(drink_json['results'][i]['geometry']['location']['lng'])+"&query_place_id="+str(drink_json['results'][i]['place_id'])
@@ -243,6 +243,13 @@ def handle_message(event):
                     #print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
                     #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     #print("address_url :"+address_url)
+                    carousel_template_message = TemplateSendMessage(
+                    alt_text='Drink carousel ',
+                    template=CarouselTemplate(
+                        columns=[CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",[MessageTemplateAction(drink_json['results'][i]['formatted_address'],drink_json['results'][i]['formatted_address']),URITemplateAction('位置',address_url)])]
+                        )
+                    )
+                    push_message(push_userid,carousel_template_message)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
