@@ -251,15 +251,17 @@ def handle_message(event):
                     print(FullToHalf(drink_json['results'][i]["formatted_address"]))
                     columns_list.append(
                     CarouselColumn(
-                    thumbnail_image_url=url_photo,
-                    title=drink_json['results'][i]['name'],
-                    text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
-                    actions=[
-                        MessageTemplateAction(
-                            label=FullToHalf(drink_json['results'][i]["formatted_address"],
-                            text=FullToHalf(drink_json['results'][i]["formatted_address"]
+                        thumbnail_image_url=url_photo,
+                        title=drink_json['results'][i]['name'],
+                        text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                        actions=[
+                            MessageTemplateAction(
+                                label=FullToHalf(drink_json['results'][i]["formatted_address"]),
+                                text=FullToHalf(drink_json['results'][i]["formatted_address"])
                             ),
-                        URITemplateAction(label='位置',uri=address_url)]))
+                            URITemplateAction(label='位置',uri=address_url)]
+                            )
+                    )
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
