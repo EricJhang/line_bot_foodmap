@@ -1,0 +1,690 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "formatted_address" : "11282台灣台北市北投區裕民一路40巷33號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1153283,
+               "lng" : 121.517775
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11668422989272,
+                  "lng" : 121.5190785798927
+               },
+               "southwest" : {
+                  "lat" : 25.11398457010727,
+                  "lng" : 121.5163789201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "8aaa526b742116974712921cfa20a23cff45674b",
+         "name" : "迷客夏milkshop 石牌店",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 1108,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/104651111736902533077/photos\"\u003e賴彥融\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAHqPnQXGWAE-8FSGLl5KtTQkd17JpiWxECL_Zer631_gmp0cH4-mvM8xNQuLzoAA6m9abkM8tT62oH5KFaCpEZM-3Nfhw4l1mSqXbtbB-6inTaqf2CdrIvJg35pQNbD67EhCywVaF67HbfVnz2ntw7XWXGhTI99GlcVhE9mLjqIk_APMH_kfNkA",
+               "width" : 1478
+            }
+         ],
+         "place_id" : "ChIJKf5HQ4yuQjQRvjF94345ClY",
+         "rating" : 4.1,
+         "reference" : "CmRbAAAAchDbTePGPK5MdeYCt7cE4DrBFqHyBzCzpz25hOXdEskCBR3n47R6MRh1CmQBBMZV1rp20WDfvS0LLYVZdiRki9aBIMiMTqcBS_cVBwlMMqKsvFubyIPE3ctRxuQTlqiPEhAqw5IneT588_PAbL--iIzcGhQHi8YdatNJLdmGscjqD_JWD0XeBA",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路20號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.116581,
+               "lng" : 121.51659
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11798037989272,
+                  "lng" : 121.5179498798928
+               },
+               "southwest" : {
+                  "lat" : 25.11528072010728,
+                  "lng" : 121.5152502201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "709619dcbe303a7d186b4109aec2665ae15ec73f",
+         "name" : "橘菓子石牌店",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 728,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113486936482690765677/photos\"\u003e橘菓子石牌店\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA87mMLIQa1CHrt0TFPnt37gtjwjuZACz_goj9U2Kq7OeF0clCElpbBKjfykNrmHrx8Pd_TJkaAa32rHbFcOffI1-wOsB8cRC3aMb-ddZWf6HFcmbB0LBN4bQ8QaMIk1Q7EhDl32yzht8foz8jLfkOxaGXGhSdUMP8TQjYboskQZDI7vv-z4xm_g",
+               "width" : 1024
+            }
+         ],
+         "place_id" : "ChIJHbx1hoyuQjQR2QUnrogTeQI",
+         "rating" : 5,
+         "reference" : "CmRbAAAAt4AnlbKqsCIVpHyAB7SREW_7qzWGcyJHJWFd-RiBZlQ4rH4ZHt01xUbKnClzNHnBFj7plRyw-ju3I91fTx9qJd0CDP8s5KGr66EbV7sxQTFDtB_PgQjVDX5Po-b03y_zEhA6TeivKwZ9M4PPPUzwzjdxGhTJkmEGBTWBeIBvib5QdfewNDyiFQ",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路43號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1165853,
+               "lng" : 121.5177648
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11788562989273,
+                  "lng" : 121.5191086798928
+               },
+               "southwest" : {
+                  "lat" : 25.11518597010728,
+                  "lng" : 121.5164090201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "e9b0d6d033095e1f47d98948250ae145a049e387",
+         "name" : "大苑子石牌店",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 5376,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/116968812533822092891/photos\"\u003eA Google User\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRZAAAA6aqwd3z_n-OLucsWGzDLMVxri0fKXhj3HYwTAIOGkZqpNium1eZmbLxMZYG0u73wht33l3Al8LN0oVbBu9YhiJXz7iA3fz8h3oaF08vFUYlYT4yMr4S1ZECvvljH2OirEhBI5EA31qtDaY6ShELUpe6BGhRE6deC60tbQrvokMDojmzgDMff5w",
+               "width" : 3744
+            }
+         ],
+         "place_id" : "ChIJkVVSd4yuQjQRkyYZwfqlYg8",
+         "rating" : 3.9,
+         "reference" : "CmRbAAAA6tnJoGhdGvaRKWkAA5qL2AXk82Z_DxzfC5jheVhFzw_idHMYHtMSKAwzxLtbZVWdkkXr2JRYh0QucfodcPhDi4Mm8O1gP4YkYceNEsj-1ebzZnaAfQFewyPIgmzGFuczEhC8UNHprl2y-jidnIs9Dz99GhSFpeEjC-ajgilPG2dKW5gbsYaEUw",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路29號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.116567,
+               "lng" : 121.517397
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11792752989272,
+                  "lng" : 121.5187492298927
+               },
+               "southwest" : {
+                  "lat" : 25.11522787010728,
+                  "lng" : 121.5160495701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "e115bfabd8292ca42b051b6ed678b9a2d7de7922",
+         "name" : "Mr. Mark Milk Tea 馬克先生鮮奶茶",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 720,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113559093592585927000/photos\"\u003eMr. Mark Milk Tea 馬克先生鮮奶茶\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAANoXcoSrh6Exw6uFDkPRvxUPehhOlPKx6LQV_67Wloxi_MOq0lyigzjyhflRWTuiz323JlD2hAb6nAPITH1W0N_Hrj0jsN7tgmxgSQK2tpQ8zD_B-4dr2H-rd4jJAf-14EhBPCJkZkSgriXEmHHTYldXEGhTG6rKXiyqj-AUA4FYucdQC913dCQ",
+               "width" : 1280
+            }
+         ],
+         "place_id" : "ChIJVx7UhoyuQjQRQoOUWqD1cbc",
+         "rating" : 4.9,
+         "reference" : "CmRbAAAAQN6fkf0MqMhj06pO_ssdpjs2JblSX5ocTTS47qCdnh2OXHTIokH2EaHH5R-8cDlMN1FXAX-Dn_GYSJ_lFXidedYQY0beJmeYQ5eHA0z3CA3DWXH8nynb5Dgfc9GbzbcaEhDWm4cme9cQfXHmMYL8vMJrGhSluGh5I4tfsfowSQbCNwi_m8Ij5A",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路5號號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1168182,
+               "lng" : 121.5164709
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11811242989272,
+                  "lng" : 121.5178094298927
+               },
+               "southwest" : {
+                  "lat" : 25.11541277010728,
+                  "lng" : 121.5151097701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "5ba365cacae78eade1523e240d9426034e5ef286",
+         "name" : "巫記青蛙下蛋（石牌店）",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 5312,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/103985615820365046789/photos\"\u003e巫政億\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA2CFMvqk3UhYB07WSbcrLI-y6gwmQywAVXkW2BqXlGlvrn48fLlzbD0LQqMPq8RwXX_doJcXOaOYJj0is_lfxWCfkIqsQKOPVqwtdLLcZZRoGCszHk_gg5_yxIBtfSDuTEhBiiDsvW8sJyB8_Z0N7g-qgGhTTJRxpD1Ai9c4jZGApzJKUf6sfxQ",
+               "width" : 2988
+            }
+         ],
+         "place_id" : "ChIJAYGJhIyuQjQRe1e9xnGztlg",
+         "rating" : 5,
+         "reference" : "CmRbAAAAqdnYh8x8z1O7e1dOcP5bRD3FPa99__rWCld9Z7-0Ofi8zbyfKGJPvcZHYB9_9OX25I5yn8z_Xtf1fzN0tUycYCDRsKiDHOwlx6GrnXrFljRNaezq2x6d-cCAIHuC6GAGEhCsEpEPr09stnArS-5X7CgiGhRbOV3lIkDCZrY2bg5VysvDSo-Mcw",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區石牌路二段99巷57號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.118424,
+               "lng" : 121.516777
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11975472989272,
+                  "lng" : 121.5181888798927
+               },
+               "southwest" : {
+                  "lat" : 25.11705507010728,
+                  "lng" : 121.5154892201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "971420f58fa19df6b09427b541a671a3de712449",
+         "name" : "清心福全",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 1080,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/111760530188596305736/photos\"\u003eCamelle Chang\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAb7kWHh_GLPyFwzWWrbL557JyuD-VM_uRGzwI9qxtd1_HoqJQoa1ta1oQBlHoOb4CL2Tsi_TIeISMCJfxWrkonARrvJLzKHRFONVlLD_hOFNZHMSDn-S-EA_-qUnVFBKMEhB1PEvHs7OXoUY3WMyE8-X1GhSXGM9yditnGHlJpd2Hk4Zu4Mh96w",
+               "width" : 1920
+            }
+         ],
+         "place_id" : "ChIJD2DPdIuuQjQRGvFeKR3Q_zw",
+         "rating" : 2.8,
+         "reference" : "CmRbAAAAqPJSUC8SGv9ILujUgyIdjRixPhEw-Y10m0l4mVZ9LzoQPqKqHjow4-YSHH05-FwMynMb2FBn8fP9USc2xouwgiw2tB_w7FYEMgXAPtXcY_jItwwssLCDKRWClg2GV0v-EhAoX99PrG6osPt94Y8d5l6HGhT-X9MDigoT_9WMO-Kdkt6pdUTKIg",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區石牌路二段110號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.117675,
+               "lng" : 121.517032
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11906687989272,
+                  "lng" : 121.5183526298927
+               },
+               "southwest" : {
+                  "lat" : 25.11636722010727,
+                  "lng" : 121.5156529701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "dabc730d77456e36661ad11a1d0e38a12c4086cb",
+         "name" : "一芳水果茶 台北石牌店",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2448,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/109387968501954470956/photos\"\u003ePonPon Wu\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA9Rwxxp2vlJs37742LvjvuYip1fUDwpSrY4R5HNVtv3Txz9uG0FfRzk9BKIh09l_cpAnLnlT5NtSN1RX45mwYrRZMmOD-qw_ligXL1C2b-5egP9epcGJudZOsCboSCiJEEhDdb6PpxquON1dcaDKcyVriGhQ-Ry77VIJ4EDKM9uxr3utZubJ5Ww",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJCz6hgouuQjQRFLxJGa9jSG4",
+         "rating" : 4.4,
+         "reference" : "CmRbAAAA98k5QThbNAVenhUV3Qo0hmD6sTxShspnaykDzTIUsqKrWMx92iFkqiZhaAZAtlB9seSjKas8Ey6IGWoTqYF4Gklt6WJYDRsfpYNhaaeyAM3gq4tlKiC66UNdJ2q7wGLeEhC-ag-Ops6yh4Xili98SPDhGhQAFpQA1VtHJElGcDEr8n0dMdE3Mg",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區致遠一路二段2號1樓號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.110789,
+               "lng" : 121.5148211
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11209107989272,
+                  "lng" : 121.5160858798927
+               },
+               "southwest" : {
+                  "lat" : 25.10939142010728,
+                  "lng" : 121.5133862201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "877de9f9f29f1d15f145cbfbd1efdefd7c91a53b",
+         "name" : "COMEBUY 石牌店",
+         "place_id" : "ChIJr-aIyJKuQjQRk-YSfj0NS1w",
+         "reference" : "CmRbAAAAT_3OpRKK5kXk5FPLBdQWNsDalJOuGU6uQCJGcI-RoFbfb4aLBUMArmJQsYRVzKx-nAvwVkAWu_EhSBW0sdnCt2Q3-zm3oPSm_TML_NvHg8Fm71aWe7lmRzKCpy5ywsGlEhBn8uWFDwPVMVpF5m3F7v_iGhQac9bQrmRC30bGFYsSP4xwiM10CQ",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路30號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1165322,
+               "lng" : 121.5170301
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11791977989272,
+                  "lng" : 121.5183875798927
+               },
+               "southwest" : {
+                  "lat" : 25.11522012010728,
+                  "lng" : 121.5156879201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "e9ead47f98045a13a05a2fd9a5390ceaf287b0b4",
+         "name" : "COMEBUY",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2239,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/115893276208697117523/photos\"\u003eFrank Lee\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA6EOU3DZkSx75FTkXJCZggXvEKy3tw0iiFxrV7lS7SUcmdEi8DOSzkHBkZv0kcl49SSHIH8FsmBeVSS1mzSfG81TgXvBbAWlwpFVYA635-q_2gVqeN9Eiem0S_Jw79CN2EhChumFe8Rg4gPUk4vgvbqf-GhSwtrvwcaLKtbfus1leiH5ouvp-nQ",
+               "width" : 3358
+            }
+         ],
+         "place_id" : "ChIJO5l9h4yuQjQR6v4Dql_SwA8",
+         "rating" : 4.4,
+         "reference" : "CmRbAAAApnPcC1OwuPunz7RIhW-hnWlB5uWG8CYhU3cyh14zHDvoBBCyH2G-ThuDDb5FCYO4tYO6U5gckD9MYj4GJFh499Jkmw3v8rxOQlmU50D1Qj7uQ5Tv95k1waxAig2UIUyDEhCGXNET-2UmDKv0VU8tINhzGhQGEciwrr4UM7ITxP8ell-vxgdu8w",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路15號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.116742,
+               "lng" : 121.516761
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11804972989272,
+                  "lng" : 121.5181022798927
+               },
+               "southwest" : {
+                  "lat" : 25.11535007010728,
+                  "lng" : 121.5154026201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "5edc5a5c35751b010b376395b69b2f72d4151130",
+         "name" : "樂茶",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3264,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/106650961495566549724/photos\"\u003e茶予茶（台北石牌店）\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA-dlG1qdEWoUmT19labNbyiCXN7ymKyUFcyJIHl8jePKm7orgGCa2Q3f_jTwL9lLr2eN0RUTmUwHpjaG4TEMWdLskuXvlBWUBnk2fYkiuBO9GRVb_j5LNQfsSu_3aC6LUEhDVHpBCuw4Va9wnGzZWOwt_GhSr6mOQ-Sewu9th24dggFh1oofOjA",
+               "width" : 2448
+            }
+         ],
+         "place_id" : "ChIJ9xzBhoyuQjQRWy4lvy0WuoQ",
+         "rating" : 4.3,
+         "reference" : "CmRbAAAANkQ81G7mI66QF1jJbmgu0idx3jUVM00Zd54xeartEwwiuU7w918FM-_d-fyADqShP5iY6Ir0-vL6IaCL_y651_7r_j33XNO1CGVs2BS0hsYSUGcuycUm8Y7P1enCigtQEhA53bXqpc-OATEd8XcTUvt6GhRzwphDGkqOFJ7pmBlnxEwqqPcVdA",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區裕民一路23號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.116766,
+               "lng" : 121.516964
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11804577989273,
+                  "lng" : 121.5182996298927
+               },
+               "southwest" : {
+                  "lat" : 25.11534612010728,
+                  "lng" : 121.5155999701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "6212da478637fd29790e9e1c3c80840c727d7bff",
+         "name" : "50嵐",
+         "photos" : [
+            {
+               "height" : 2432,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/115893276208697117523/photos\"\u003eFrank Lee\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAhY5Is99H7vmg7VtfDwdgHoQVSZlK8uPkxATQNuJRwc-2NfbTeCmM9HnxY4XKqz7lcZ-4ywz_lk5_eNGuVqto0P0k5VxkJYdGe9hkWPdHPBCFl1oS7T6rTAZR1ZG1PXozEhAmklWf-_dsx4WDwFLEEZL1GhT86wgRBZggLhO7h9vf8KXTQZovzA",
+               "width" : 3648
+            }
+         ],
+         "place_id" : "ChIJi8-ygIyuQjQRBaejEUABDG4",
+         "rating" : 3.8,
+         "reference" : "CmRbAAAABMyKWzjQOyW8ZaVdIBSvLrBgK25Z-WbNXI4MnnZYPfRpF5_BTirNMbaXqMIe819ZX4-qG2iC-KScBCSMp_6yKNHXyT0Y-8VzF6nh6STCJz0dmx2R_u4xh0YUjcNkAEw3EhDG-HNgzYcqmOajUvG6SWqGGhTE3zo6i5a9boOlW6m1Dakyy7QlvQ",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區東華街一段556號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1151318,
+               "lng" : 121.5155046
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11645802989272,
+                  "lng" : 121.5168134798927
+               },
+               "southwest" : {
+                  "lat" : 25.11375837010728,
+                  "lng" : 121.5141138201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "9d5fa016d01b20e899e54bc243edc49b88bed604",
+         "name" : "COCO都可茶飲",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2313,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/115893276208697117523/photos\"\u003eFrank Lee\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA2MIOsntSJSLsEFO_cTDh7hyUg-_x6SQbA7nIGodVhyIr7eoV0gU1OLDRHez8p6KXiuvxsmZ9MEelCLqlnlJ4Abqir-gxU0p6Phd5jee4ivEsHwhyQfJk8W6D2i84huyBEhA3cKyJhkGiWkToOMUQyFOnGhQY9sFxGh9028OFULtTTzDCIffQjg",
+               "width" : 3471
+            }
+         ],
+         "place_id" : "ChIJoznm3YyuQjQRRqum7VRbM4w",
+         "rating" : 2.9,
+         "reference" : "CmRbAAAA3oKJe_2lq7Fbic19Wgkunm1BtGOq7du3S75VPxi-TXZuc3GPSNHFDTF7YhyYFONQWzAvMGP_a1JNUMY46l2zn8nTW7ywndMJlG2_LI5ZHS7cXDZn0TdZPT_NCSuKE6-YEhBhvsWb5LX4DCCRk-nQEJKEGhRtCtdKGN8OFtzk_NFSppMh_lD61Q",
+         "types" : [ "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區石牌路二段90巷19號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1171953,
+               "lng" : 121.5172864
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11850192989272,
+                  "lng" : 121.5186375798928
+               },
+               "southwest" : {
+                  "lat" : 25.11580227010728,
+                  "lng" : 121.5159379201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "ddc152fef83371e5e197e16b16bff0fc431afacb",
+         "name" : "三番飯卷",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2448,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114671042418490192339/photos\"\u003e林懿\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAANOUt1i51ZuVUShUF_HTwGNZc4vKllxoZ9UMFifBAHs0kSwektFL1QgphMOmfMs7DnTxmj2igrgwT0o76zMjhsfOrcF3XjdkVcltWf9e12_mZEJe_mJDUxLmDViF8prs7EhCSn-e_weFB-08wBOjjfKVYGhSOJU-ZsXIaYSbqzc5zkwFc4qr5bQ",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJUzQ3dIyuQjQRuw9zzrfyt4g",
+         "rating" : 4.2,
+         "reference" : "CmRbAAAAMIZg7R8-MhfI4CM1ki0U7EqFu9wExe0ydb4y8Z-gq94IgXsrjDsp0YVyyEqLdn0ebGKUrXRp2aWdsznyiczcGnGC9m-BAKk9GVa4hk63atyKCLjiTEZMnHxiJkm0duK7EhANHPAeyOPiSQ5wN3gtrTCFGhRXS8Iv5m0nEc0p7ioy7wYIRCwcaA",
+         "types" : [
+            "restaurant",
+            "meal_delivery",
+            "cafe",
+            "meal_takeaway",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區明德路333巷31號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1164028,
+               "lng" : 121.518444
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11777612989272,
+                  "lng" : 121.5197980798928
+               },
+               "southwest" : {
+                  "lat" : 25.11507647010728,
+                  "lng" : 121.5170984201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "d6a82f16c9ebcdbddb7d7eab536e1e0ce44932cf",
+         "name" : "Coffee Smith 石牌店",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2160,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108658678975865319610/photos\"\u003eDennis Yang\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA9zaX_-Jd_e-huLUNTnladB2xM680tn6JJnJ2MoCvq_9gGZkpcIZ-xJuahGqHi1j_ZCpnZ1kKQf0p-MqkU3Ny313ox-_XbN9AUJYy2C5m4g-FdIfiSXTC_VG5MYQESPMnEhBQUA0K-htp2yLUTKjyFeluGhT2nh-1ygqlcPr4J_62Dj42nbTmfQ",
+               "width" : 3840
+            }
+         ],
+         "place_id" : "ChIJewavdIyuQjQR2GQkxk-ZSgo",
+         "rating" : 4,
+         "reference" : "CmRbAAAAM333pMUteb4Ursr8kZ0-7rxseYuVAWz0a3wNuOQl_QtVVMrOHD2fchGMccDdpXO0vnLOqvRstB7aUTkZB8-HwqoGyFRORs09o1yyRvGFX-vkIWStyo5lDqDcKhaTShYXEhD_BI0jCZQ1E8XbaHs9_2NkGhTWurTO3560X3RRMQ1V7nVzLcQhTg",
+         "types" : [
+            "restaurant",
+            "cafe",
+            "store",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區東華街一段528號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.114398,
+               "lng" : 121.516049
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11571702989272,
+                  "lng" : 121.5173449298927
+               },
+               "southwest" : {
+                  "lat" : 25.11301737010728,
+                  "lng" : 121.5146452701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "6bb151cc58551a87fccb864254a8083c28f77d52",
+         "name" : "老窩咖啡烘焙館 - 石牌總部",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2448,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/102458660973953917504/photos\"\u003e王包包\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAnNfQe8_aChEYvpVQwjvDzBwhTI9jSWDSjObcWvMyYi3FSA-aY7xYNhX-SUXItXMs3Xz7k7Y6k69FrkSfhLMOdKq17vicPLAbVNRg6LoXzZqTiowM33y0G0Q2y_7COUo5EhAelDzO4puNBBVguSImY2a4GhS2kQO1MXcjuTeRPnfmIhYMcatpzg",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJsc55jIyuQjQRhGzxrROFHhk",
+         "rating" : 4.2,
+         "reference" : "CmRbAAAA8Bgrc6yBK-SHjEpCNB2KLrWUDaxEykHk-RQXfbQXAs8xVRVEQGQn-zNVcFisZVLFa0rek8FEzF6zPxzdKsSXM0WFA2Vp8Ge7iBL7ZUj_t6FeH7Hf-P_c4mzOWUkonlWVEhB-hwi3VO7Skkqr4NmkJgQWGhSXvXbLuCQdlWTo3eV4NRqQihYn_A",
+         "types" : [
+            "cafe",
+            "bakery",
+            "store",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區自強街101號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.110836,
+               "lng" : 121.515156
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11214312989273,
+                  "lng" : 121.5165173798927
+               },
+               "southwest" : {
+                  "lat" : 25.10944347010728,
+                  "lng" : 121.5138177201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "7daea3f92938c41647f5a706af39935868ba71a3",
+         "name" : "COCO都可茶飲",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3264,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112696572920452145168/photos\"\u003e歐吉桑\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAANXCbq9IVEvSyl44GweMUeIcY6T3mFPyt8tX0i9ZDeSHMcCsWLLbOEqV_ndtyDeQ4DVMneB0CmpduxXdBByLUn6khVX-O2qHPdrnrUn83xUpvV8r9yFvs6M2WzlZVcge9EhA9Ai-7W545olM4AKAS6hwDGhTAMQNK0l_S7sJmquHIKXdo2E5J6Q",
+               "width" : 2448
+            }
+         ],
+         "place_id" : "ChIJbzO_3YyuQjQRieTosVXyprA",
+         "rating" : 3.9,
+         "reference" : "CmRbAAAA9UkSgnpqeDG0HRe4Atietu2zVzg85zNJP_9DDCUMUXs-6C1kMGFLJWVhyhj7M1MyQ51W8MJ2_UfTto5klRVCNyLsW4klTe0eX-7Xe9WOsD9HMn1JVeDT3G8vzh59E6KvEhAB1soJDrwiRHeDyyxCRBwJGhQ226h7TneCzlk33eKxNhI91O1Mmw",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ]
+      },
+      {
+         "formatted_address" : "112台灣台北市北投區尊賢街282號",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.1178707,
+               "lng" : 121.5068515
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.11921027989272,
+                  "lng" : 121.5081767798927
+               },
+               "southwest" : {
+                  "lat" : 25.11651062010728,
+                  "lng" : 121.5054771201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "c7cff400fc9cec39ee90ebbbe590ad04f31fe621",
+         "name" : "多喝點",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 4032,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113445748712464190839/photos\"\u003emomochl Tsai\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAIa9OxZ2l8_0eF9RHfYjl2uRHBmYWOlPWbaw3d0gsqocsSECKC1v5PlIik8MEk27LZleeKnl6gnADBsQVqhLhgfO3yYnyQ37EUgFwM0GHDu_2RkpEXRQ5yA3O3iltk-ErEhAfsHly0uq2_rZj1WqYSUvTGhSSafuE06ISc_cDTzQf9wdWLpdq4A",
+               "width" : 3024
+            }
+         ],
+         "place_id" : "ChIJ2UuIFPGuQjQRIhX6n_GOgmo",
+         "rating" : 4.2,
+         "reference" : "CmRbAAAAEBdlQD0oEBA_KihgCAe4w89pSbwB3Ce7dDZHfOmgHTyf8EdE7eYvRroE0g9bCrmPAvEj_xXup2ZUj_JVG-mKsKTEZ0WP83oZ1VTHZI5QrnQfAKF0N2t7iVPhcdv20n6yEhBMhDfFNSXC_AK0Bv1wWgzBGhTLZ_eYcIXZqtAXZzYFxiCgdo29hw",
+         "types" : [ "point_of_interest", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}
