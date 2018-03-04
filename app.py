@@ -271,7 +271,7 @@ def handle_message(event):
                             columns=[
                                 CarouselColumn(
                                     thumbnail_image_url=url_photo,
-                                    title="123",
+                                    title=drink_json['results'][i]['name'],
                                     text="456",
                                     actions=[
                                         MessageTemplateAction(
