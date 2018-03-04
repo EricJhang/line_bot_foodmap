@@ -484,7 +484,8 @@ def handle_message(event):
     #print(content)
 
 def FullToHalf(s): 
-    n = [] 
+    n = []
+    print(s)    
     for char in s: 
         num = ord(char) 
         if num == 0x3000: 
