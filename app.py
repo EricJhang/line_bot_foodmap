@@ -219,6 +219,8 @@ def handle_message(event):
     elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ):
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
+        message = TextSendMessage(text= "正在搜尋"+address_tmp+"附近的"+search_kind_tmp+"請燒等")
+        replay_message(event,carousel_template_message)
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&language=zh-TW"+'&key='+googlekey
         #print(event.message.text.split(','))
         print(url)
