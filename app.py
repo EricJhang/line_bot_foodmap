@@ -237,11 +237,7 @@ def handle_message(event):
                         url_photo = ""  
                     address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
                     if(url_photo !=""): 
-                        columns_list.append(new CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address']],text=drink_json['results'][i]['formatted_address']),
-                                URITemplateAction(
-                                    label='位置',
-                                    uri=address_url
-                                )]))
+                        columns_list.append(new CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",[MessageTemplateAction(drink_json['results'][i]['formatted_address'],drink_json['results'][i]['formatted_address']),URITemplateAction('位置',address_url)]))
                     #print("title:"+drink_json['results'][i]['name'])
                     #print("title length :"+str(len(drink_json['results'][i]['name'])))
                     #print("thumbnail_image_url :"+str(url_photo_flag))
