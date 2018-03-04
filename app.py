@@ -196,7 +196,7 @@ def handle_lcationmessage(event):
         #push_message(push_userid,carousel_template_message)
     else:
         message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷，可以試著移動地址在試一次")
-        push_message(push_userid,message)
+        #push_message(push_userid,message)
         replay_message(event,message)
     #print(req.text)    
 @handler.add(MessageEvent, message=TextMessage)
