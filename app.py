@@ -234,8 +234,6 @@ def handle_message(event):
                     else :
                         url_photo = ""  
                     address_url = "https://www.google.com/maps/search/?api=1&query="+str(drink_json['results'][i]['geometry']['location']['lat'])+","+str(drink_json['results'][i]['geometry']['location']['lng'])+"&query_place_id="+str(drink_json['results'][i]['place_id'])
-                    if(url_photo !=""): 
-                        columns_list.append(CarouselColumn(thumbnail_image_url=url_photo,title=drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),URITemplateAction(label='位置',uri=address_url)]))
                     #print("title:"+drink_json['results'][i]['name'])
                     #print("title length :"+str(len(drink_json['results'][i]['name'])))
                     #print("thumbnail_image_url :"+str(url_photo_flag))
@@ -245,10 +243,23 @@ def handle_message(event):
                     #print("address_url :"+address_url)
                     tmp_string = str(drink_json['results'][i]["formatted_address"]).split("台灣",1)
                     print(tmp_string)
-                    label_string="地址"
+                    label_string="地址:"
                     if(len(tmp_string) >=2):
                         label_string = label_string+tmp_string[1]
+                    else:
+                        label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
                     print(FullToHalf(drink_json['results'][i]["formatted_address"]))
+                    columns_list.append(
+                    CarouselColumn(
+                    thumbnail_image_url=url_photo,
+                    title=drink_json['results'][i]['name'],
+                    text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                    actions=[
+                        MessageTemplateAction(
+                            label=FullToHalf(drink_json['results'][i]["formatted_address"],
+                            text=FullToHalf(drink_json['results'][i]["formatted_address"]
+                            ),
+                        URITemplateAction(label='位置',uri=address_url)]))
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
@@ -271,48 +282,13 @@ def handle_message(event):
                             ]
                         )
                     )
-                    push_message(event.source.user_id,carousel_template_message)
+                    #push_message(event.source.user_id,carousel_template_message)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
-            if(len(columns_list) >=5):            
-                carousel_template_message = TemplateSendMessage(
-                    alt_text='Carousel template',
-                    template=CarouselTemplate(columns=[columns_list[0],
-                    columns_list[1],
-                    columns_list[2],
-                    columns_list[3],
-                    columns_list[4]])
-                )
-            elif(len(columns_list) == 4):
-                carousel_template_message = TemplateSendMessage(
-                    alt_text='Carousel template',
-                    template=CarouselTemplate(columns=[columns_list[0],
-                    columns_list[1],
-                    columns_list[2],
-                    columns_list[3]])
-                )
-            elif(len(columns_list) == 3):
-                carousel_template_message = TemplateSendMessage(
-                    alt_text='Carousel template',
-                    template=CarouselTemplate(columns=[columns_list[0],
-                    columns_list[1],
-                    columns_list[2]])
-                )
-            elif(len(columns_list) == 2):
-                carousel_template_message = TemplateSendMessage(
-                    alt_text='Carousel template',
-                    template=CarouselTemplate(columns=[columns_list[0],
-                    columns_list[1]])
-                )
-            elif(len(columns_list) == 1):
-                carousel_template_message = TemplateSendMessage(
-                    alt_text='Carousel template',
-                    template=CarouselTemplate(columns=[columns_list[0]])
-                )
-            else:
-                carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
-            #print(carousel_template_message)
+            carousel_template_message = TemplateSendMessage(
+                alt_text='Drink carousel',
+                template=CarouselTemplate(columns=columns_list)
             push_message(push_userid,carousel_template_message)
         else:
             message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
