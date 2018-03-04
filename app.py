@@ -520,9 +520,9 @@ def FullToHalf(s):
  
 """   
 def str_full_to_half(ustring):
-    """
+
     Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
-    """
+
     out_str = []
     for char in ustring:
         inside_code = ord(char)
@@ -532,7 +532,7 @@ def str_full_to_half(ustring):
             inside_code -= 0xfee0
         if inside_code < 0x0020 or inside_code > 0x7e:
             out_str.append(char)
-        out_str.append(chr(inside_code))
+        out_str.append(char(inside_code))
     return ''.join(out_str)
 """    
 def replay_message(event,text):
