@@ -266,12 +266,28 @@ def handle_message(event):
                         )
                     )
                     carousel_template_message = TemplateSendMessage(
-                    alt_text='Drink carousel ',
-                    template=CarouselTemplate(
-                        columns=[CarouselColumn(thumbnail_image_url=url_photo,title=drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),URITemplateAction(label='位置',uri=address_url)])]
+                        alt_text='Drink carousel ',
+                        template=CarouselTemplate(
+                            columns=[
+                                CarouselColumn(
+                                    thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
+                                    title=drink_json['results'][i]['name'],
+                                    text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                                    actions=[
+                                        MessageTemplateAction(
+                                            label=drink_json['results'][i]['formatted_address'],
+                                            text=drink_json['results'][i]['formatted_address']
+                                        ),
+                                        URITemplateAction(
+                                            label='位置',
+                                            uri=address_url
+                                        )
+                                    ]
+                                )
+                            ]
                         )
                     )
-                    push_message(event.source.user_id,buttons_template)
+                    push_message(event.source.user_id,carousel_template_message)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
