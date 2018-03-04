@@ -290,7 +290,7 @@ def handle_message(event):
                     break
             carousel_template_message = TemplateSendMessage(
                 alt_text='Drink carousel',
-                template=CarouselTemplate(columns=columns_list)
+                template=CarouselTemplate(columns=columns_list))
             push_message(push_userid,carousel_template_message)
         else:
             message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
