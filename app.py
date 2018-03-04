@@ -120,11 +120,11 @@ def handle_lcationmessage(event):
     isTaiwan = True
     if("台灣" in event.message.address) or ("台湾" in event.message.address):
         url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=zh-TW&opennow&type=restaurant&key='+googlekey
-        print("address 包含 台灣")
+        #print("address 包含 台灣")
     else:
         url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=en&opennow&type=restaurant&key='+googlekey
         isTaiwan = False
-        print("address 沒有 台灣") 
+        #print("address 沒有 台灣") 
     #print(url)        
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
@@ -145,12 +145,7 @@ def handle_lcationmessage(event):
             else :
                 url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
-            req_photo = requests.get(url_photo)
-            if(req_photo.status_code == 200):
-                url_photo_flag =True
-            else:
-                url_photo_flag = False
-            if(url_photo_flag):
+            if(url_photo != ""):
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=foodinfo['results'][i]['vicinity'],text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
@@ -190,7 +185,7 @@ def handle_lcationmessage(event):
             )
         else:
             carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷，可以試著移動地址在試一次")
-        print(columns_list)
+        #print(columns_list)
         #print(carousel_template_message)
         replay_message(event,carousel_template_message)
         #push_message(push_userid,carousel_template_message)
@@ -220,7 +215,7 @@ def handle_message(event):
         address_tmp = event.message.text.split(',')[2];
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&language=zh-TW"+'&key='+googlekey
         #print(event.message.text.split(','))
-        #print(url)
+        print(url)
         req = requests.get(url)#發送請求
         drink_json = json.loads(req.text) 
         columns_list=[]
