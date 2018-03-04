@@ -237,7 +237,7 @@ def handle_message(event):
                         url_photo = ""  
                     address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
                     if(url_photo !=""): 
-                        columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
+                        columns_list.append(new CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address']],text=drink_json['results'][i]['formatted_address']),
                                 URITemplateAction(
                                     label='位置',
                                     uri=address_url
