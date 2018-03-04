@@ -265,6 +265,11 @@ def handle_message(event):
                             ]
                         )
                     )
+                    tmp_string = str(drink_json['results'][i]["formatted_address"]).split("台灣",1)
+                    print(tmp_string)
+                    label_string="地址"
+                    if(len(tmp_string) >2):
+                        label_string = label_string+tmp_string[1]
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
@@ -275,7 +280,7 @@ def handle_message(event):
                                     text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
                                     actions=[
                                         MessageTemplateAction(
-                                            label=str(drink_json['results'][i]["formatted_address"]),
+                                            label=label_string,
                                             text="test"
                                         ),
                                         URITemplateAction(
