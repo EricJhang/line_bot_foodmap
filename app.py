@@ -270,7 +270,7 @@ def handle_message(event):
                         template=CarouselTemplate(
                             columns=[
                                 CarouselColumn(
-                                    thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
+                                    thumbnail_image_url=url_photo,
                                     title="123",
                                     text="456",
                                     actions=[
