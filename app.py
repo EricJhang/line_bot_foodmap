@@ -275,7 +275,7 @@ def handle_message(event):
                                     text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
                                     actions=[
                                         MessageTemplateAction(
-                                            label=drink_json['results'][i]['formatted_address'],
+                                            label=str(drink_json['results'][i]["formatted_address"]),
                                             text="test"
                                         ),
                                         URITemplateAction(
