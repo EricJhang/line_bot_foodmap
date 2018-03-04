@@ -248,7 +248,7 @@ def handle_message(event):
                     label_string="地址"
                     if(len(tmp_string) >=2):
                         label_string = label_string+tmp_string[1]
-                    print(str_full_to_half(drink_json['results'][i]["formatted_address"]))
+                    print(FullToHalf(drink_json['results'][i]["formatted_address"]))
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
@@ -504,7 +504,7 @@ def handle_message(event):
     #except LineBotApiError as e:
     #    print(e)
     #print(content)
-"""
+
 def FullToHalf(s): 
     n = [] 
     s = s.decode('utf-8') 
@@ -515,7 +515,8 @@ def FullToHalf(s):
         elif 0xFF01 <= num <= 0xFF5E: 
             num -= 0xfee0 num = unichr(num) n.append(num) 
     return ''.join(n) 
-"""    
+ 
+"""   
 def str_full_to_half(ustring):
     """
     Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
@@ -530,7 +531,8 @@ def str_full_to_half(ustring):
         if inside_code < 0x0020 or inside_code > 0x7e:
             out_str.append(char)
         out_str.append(chr(inside_code))
-    return ''.join(out_str)     
+    return ''.join(out_str)
+"""    
 def replay_message(event,text):
     line_bot_api.reply_message(
         event.reply_token,
