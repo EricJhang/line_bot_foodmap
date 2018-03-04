@@ -248,8 +248,8 @@ def handle_message(event):
                         label_string = label_string+tmp_string[1]
                     else:
                         label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
-                    print("轉碼前:"drink_json['results'][i]["formatted_address"])    
-                    print("轉碼後:"FullToHalf(drink_json['results'][i]["formatted_address"]))
+                    print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
+                    print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
                     columns_list.append(
                     CarouselColumn(
                         thumbnail_image_url=url_photo,
