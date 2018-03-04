@@ -216,11 +216,11 @@ def handle_message(event):
     if(event.message.text == "#搜尋") or (event.message.text == "#找餐廳"):      
         message = TextSendMessage(text= "請輸入格式 #搜尋,搜尋種類,搜尋地址\n範例說明: #搜尋,飲料,台北車站")
         replay_message(event,message)
-    elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ):
+    elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ) :
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
         message = TextSendMessage(text= "正在搜尋"+address_tmp+"附近的"+search_kind_tmp+"請燒等")
-        replay_message(event,carousel_template_message)
+        replay_message(event,message)
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&language=zh-TW"+'&key='+googlekey
         #print(event.message.text.split(','))
         print(url)
