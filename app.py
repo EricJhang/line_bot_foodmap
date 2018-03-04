@@ -235,7 +235,7 @@ def handle_message(event):
                         url_photo = ""  
                     address_url = "https://www.google.com/maps/search/?api=1&query="+str(drink_json['results'][i]['geometry']['location']['lat'])+","+str(drink_json['results'][i]['geometry']['location']['lng'])+"&query_place_id="+str(drink_json['results'][i]['place_id'])
                     if(url_photo !=""): 
-                        columns_list.append(CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",[MessageTemplateAction(drink_json['results'][i]['formatted_address'],drink_json['results'][i]['formatted_address']),URITemplateAction('位置',address_url)]))
+                        columns_list.append(CarouselColumn(thumbnail_image_url=url_photo,title=drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),URITemplateAction(label='位置',uri=address_url)]))
                     #print("title:"+drink_json['results'][i]['name'])
                     #print("title length :"+str(len(drink_json['results'][i]['name'])))
                     #print("thumbnail_image_url :"+str(url_photo_flag))
@@ -243,13 +243,35 @@ def handle_message(event):
                     #print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
                     #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     #print("address_url :"+address_url)
+                     buttons_template = TemplateSendMessage(
+                        alt_text='正妹 template',
+                        template=ButtonsTemplate(
+                            title='選擇服務',
+                            text='請選擇',
+                            thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
+                            actions=[
+                                MessageTemplateAction(
+                                    label='PTT 表特版 近期大於 10 推的文章',
+                                    text='PTT 表特版 近期大於 10 推的文章'
+                                ),
+                                MessageTemplateAction(
+                                    label='來張 imgur 正妹圖片',
+                                    text='來張 imgur 正妹圖片'
+                                ),
+                                MessageTemplateAction(
+                                    label='隨便來張正妹圖片',
+                                    text='隨便來張正妹圖片'
+                                )
+                            ]
+                        )
+                    )
                     carousel_template_message = TemplateSendMessage(
                     alt_text='Drink carousel ',
                     template=CarouselTemplate(
                         columns=[CarouselColumn(thumbnail_image_url=url_photo,title=drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),URITemplateAction(label='位置',uri=address_url)])]
                         )
                     )
-                    push_message(event.source.user_id,carousel_template_message)
+                    push_message(event.source.user_id,buttons_template)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
