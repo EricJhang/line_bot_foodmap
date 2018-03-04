@@ -249,7 +249,7 @@ def handle_message(event):
                         columns=[CarouselColumn(url_photo,drink_json['results'][i]['name'],"網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",[MessageTemplateAction(drink_json['results'][i]['formatted_address'],drink_json['results'][i]['formatted_address']),URITemplateAction('位置',address_url)])]
                         )
                     )
-                    push_message(push_userid,carousel_template_message)
+                    push_message(event.source.user_id,carousel_template_message)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
