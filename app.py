@@ -242,13 +242,14 @@ def handle_message(event):
                     #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     #print("address_url :"+address_url)
                     tmp_string = str(drink_json['results'][i]["formatted_address"]).split("台灣",1)
-                    print(tmp_string)
+                    #print(tmp_string)
                     label_string="地址:"
                     if(len(tmp_string) >=2):
                         label_string = label_string+tmp_string[1]
                     else:
                         label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
-                    print(FullToHalf(drink_json['results'][i]["formatted_address"]))
+                    print("轉碼前:"drink_json['results'][i]["formatted_address"])    
+                    print("轉碼後:"FullToHalf(drink_json['results'][i]["formatted_address"]))
                     columns_list.append(
                     CarouselColumn(
                         thumbnail_image_url=url_photo,
@@ -485,7 +486,7 @@ def handle_message(event):
 
 def FullToHalf(s): 
     n = []
-    print(s)    
+    #print(s)    
     for char in s: 
         num = ord(char) 
         if num == 0x3000: 
