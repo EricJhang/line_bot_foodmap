@@ -243,33 +243,12 @@ def handle_message(event):
                     #print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
                     #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
                     #print("address_url :"+address_url)
-                    buttons_template = TemplateSendMessage(
-                        alt_text='正妹 template',
-                        template=ButtonsTemplate(
-                            title='選擇服務',
-                            text='請選擇',
-                            thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
-                            actions=[
-                                MessageTemplateAction(
-                                    label='PTT 表特版 近期大於 10 推的文章',
-                                    text='PTT 表特版 近期大於 10 推的文章'
-                                ),
-                                MessageTemplateAction(
-                                    label='來張 imgur 正妹圖片',
-                                    text='來張 imgur 正妹圖片'
-                                ),
-                                MessageTemplateAction(
-                                    label='隨便來張正妹圖片',
-                                    text='隨便來張正妹圖片'
-                                )
-                            ]
-                        )
-                    )
                     tmp_string = str(drink_json['results'][i]["formatted_address"]).split("台灣",1)
                     print(tmp_string)
                     label_string="地址"
-                    if(len(tmp_string) >2):
+                    if(len(tmp_string) >=2):
                         label_string = label_string+tmp_string[1]
+                    print(str_full_to_half(drink_json['results'][i]["formatted_address"])
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
@@ -526,7 +505,31 @@ def handle_message(event):
     #    print(e)
     #print(content)
 
-        
+def FullToHalf(s): 
+    n = [] 
+    s = s.decode('utf-8') 
+    for char in s: num = ord(char) 
+        if num == 0x3000: 
+            num = 32 
+        elif 0xFF01 <= num <= 0xFF5E: 
+            num -= 0xfee0 num = unichr(num) n.append(num) 
+    return ''.join(n) 
+    
+def str_full_to_half(in_str):
+    """
+    Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
+    """
+    out_str = []
+    for char in ustring:
+        inside_code = ord(char)
+        if inside_code == 0x3000:
+            inside_code = 0x0020  # space
+        else:
+            inside_code -= 0xfee0
+        if inside_code < 0x0020 or inside_code > 0x7e:
+            out_str.append(char)
+        out_str.append(chr(inside_code))
+    return ''.join(out_str)     
 def replay_message(event,text):
     line_bot_api.reply_message(
         event.reply_token,
