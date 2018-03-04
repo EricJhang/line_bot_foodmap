@@ -504,17 +504,18 @@ def handle_message(event):
     #except LineBotApiError as e:
     #    print(e)
     #print(content)
-
+"""
 def FullToHalf(s): 
     n = [] 
     s = s.decode('utf-8') 
-    for char in s: num = ord(char) 
+    for char in s: 
+        num = ord(char) 
         if num == 0x3000: 
             num = 32 
         elif 0xFF01 <= num <= 0xFF5E: 
             num -= 0xfee0 num = unichr(num) n.append(num) 
     return ''.join(n) 
-    
+"""    
 def str_full_to_half(in_str):
     """
     Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
@@ -522,7 +523,7 @@ def str_full_to_half(in_str):
     out_str = []
     for char in ustring:
         inside_code = ord(char)
-        if inside_code == 0x3000:
+        if(inside_code == 0x3000):
             inside_code = 0x0020  # space
         else:
             inside_code -= 0xfee0
