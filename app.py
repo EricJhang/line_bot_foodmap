@@ -489,7 +489,7 @@ def FullToHalf(s):
             num = 32 
         elif 0xFF01 <= num <= 0xFF5E: 
             num -= 0xfee0 
-            num = unichr(num) 
+            num = chr(num) 
             n.append(num) 
     return ''.join(n) 
 
