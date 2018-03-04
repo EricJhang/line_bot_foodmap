@@ -154,7 +154,12 @@ def handle_lcationmessage(event):
             if(i >=8): 
                 i = len(foodinfo['results'])
                 break
-        #print(str(len(columns_list)))        
+        #print(str(len(columns_list)))
+        carousel_template_message = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(columns=columns_list)
+                )
+        """    
         if(len(columns_list) >=9) :        
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
@@ -185,6 +190,7 @@ def handle_lcationmessage(event):
             )
         else:
             carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有餐廳唷，可以試著移動地址在試一次")
+        """    
         #print(columns_list)
         #print(carousel_template_message)
         replay_message(event,carousel_template_message)
@@ -373,10 +379,12 @@ def handle_message(event):
                         else:
                             carousel_template_message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                         #print(carousel_template_message)
-                        push_message(push_userid,carousel_template_message)
+                        replay_message(event,carousel_template_message)
+                        #push_message(push_userid,carousel_template_message)
                     else:
                         message = TextSendMessage(text= "抱歉該位置附近沒有"+serch_location["search_kind"]+"唷，可以試著打出更詳細地址或者搜尋其他地址")
-                        push_message(push_userid,message)
+                        replay_message(event,message)
+                        #push_message(push_userid,message)
             else:
                 search_kind_tmp = address_tmp = event.message.text.split(',')[1];
                 address_tmp = event.message.text.split(',')[2];
