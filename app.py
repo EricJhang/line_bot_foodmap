@@ -516,7 +516,7 @@ def FullToHalf(s):
             num -= 0xfee0 num = unichr(num) n.append(num) 
     return ''.join(n) 
 """    
-def str_full_to_half(in_str):
+def str_full_to_half(ustring):
     """
     Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
     """
