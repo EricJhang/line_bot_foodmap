@@ -110,11 +110,11 @@ def default(event):
                     replay_message(event,message)
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
-    print("call handle_lcationmessage sucess")
-    print(event)
-    print("address:"+str(event.message.address))
-    print("latitude:"+str(event.message.latitude))
-    print("longitude:"+str(event.message.longitude))
+    #print("call handle_lcationmessage sucess")
+    #print(event)
+    #print("address:"+str(event.message.address))
+    #print("latitude:"+str(event.message.latitude))
+    #print("longitude:"+str(event.message.longitude))
     latitude = event.message.latitude
     longitude = event.message.longitude
     isTaiwan = True
@@ -125,18 +125,18 @@ def handle_lcationmessage(event):
         url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+str(latitude)+','+str(longitude)+'&radius=500&language=en&opennow&type=restaurant&key='+googlekey
         isTaiwan = False
         print("address 沒有 台灣") 
-    print(url)        
+    #print(url)        
     req = requests.get(url)#發送請求
     foodinfo = json.loads(req.text)
-    print(event)
+    #print(event)
     if(event.source.type == 'user'):
         push_userid = event.source.user_id
     elif(event.source.type == 'group'):
         push_userid = event.source.group_id
-    print(str(push_userid))    
+    #print(str(push_userid))    
     columns_list=[]
     url_photo_flag = False
-    print(foodinfo)
+    #print(foodinfo)
     if(len(foodinfo['results']) >= 1):
         for i in range(len(foodinfo['results'])):
             if( 'photos' in foodinfo['results'][i]):
@@ -155,18 +155,11 @@ def handle_lcationmessage(event):
                         URITemplateAction(
                             label='位置',
                             uri=address_url
-                        )]))
-            print("title:"+foodinfo['results'][i]['name'])
-            print("title length :"+str(len(foodinfo['results'][i]['name'])))
-            print("thumbnail_image_url :"+str(url_photo_flag))
-            print("label :"+foodinfo['results'][i]['vicinity'])
-            print("label type:"+str(type(foodinfo['results'][i]['vicinity'])))
-            print("label length :"+str(len(foodinfo['results'][i]['vicinity'])))
-            print("address_url :"+address_url)
-            if(i >=9): 
+                        )]))            
+            if(i >=8): 
                 i = len(foodinfo['results'])
                 break
-        print(str(len(columns_list)))        
+        #print(str(len(columns_list)))        
         if(len(columns_list) >=9) :        
             carousel_template_message = TemplateSendMessage(
                 alt_text='Carousel template',
