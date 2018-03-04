@@ -507,7 +507,6 @@ def handle_message(event):
 
 def FullToHalf(s): 
     n = [] 
-    s = s.decode('utf-8') 
     for char in s: 
         num = ord(char) 
         if num == 0x3000: 
@@ -517,8 +516,8 @@ def FullToHalf(s):
             num = unichr(num) 
             n.append(num) 
     return ''.join(n) 
- 
-"""   
+
+ """
 def str_full_to_half(ustring):
 
     Adapt from http://www.pythonclub.org/python-scripts/quanjiao-banjiao
@@ -532,9 +531,9 @@ def str_full_to_half(ustring):
             inside_code -= 0xfee0
         if inside_code < 0x0020 or inside_code > 0x7e:
             out_str.append(char)
-        out_str.append(char(inside_code))
+        out_str.append(chr(inside_code))
     return ''.join(out_str)
-"""    
+ """  
 def replay_message(event,text):
     line_bot_api.reply_message(
         event.reply_token,
