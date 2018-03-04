@@ -280,7 +280,7 @@ def handle_message(event):
                                         ),
                                         URITemplateAction(
                                             label='位置',
-                                            uri=address_url
+                                            uri='https://i.imgur.com/qKkE2bj.jpg'
                                         )
                                     ]
                                 )
