@@ -272,7 +272,7 @@ def handle_message(event):
                                 CarouselColumn(
                                     thumbnail_image_url=url_photo,
                                     title=drink_json['results'][i]['name'],
-                                    text="456",
+                                    text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
                                     actions=[
                                         MessageTemplateAction(
                                             label="test",
