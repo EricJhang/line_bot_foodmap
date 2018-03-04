@@ -248,7 +248,7 @@ def handle_message(event):
                     label_string="地址"
                     if(len(tmp_string) >=2):
                         label_string = label_string+tmp_string[1]
-                    print(str_full_to_half(drink_json['results'][i]["formatted_address"])
+                    print(str_full_to_half(drink_json['results'][i]["formatted_address"]))
                     carousel_template_message = TemplateSendMessage(
                         alt_text='Drink carousel',
                         template=CarouselTemplate(
@@ -263,8 +263,8 @@ def handle_message(event):
                                             text="test"
                                         ),
                                         URITemplateAction(
-                                            label="test",
-                                            uri='https://i.imgur.com/qKkE2bj.jpg'
+                                            label='位置',
+                                            uri=address_url
                                         )
                                     ]
                                 )
