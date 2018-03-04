@@ -219,8 +219,8 @@ def handle_message(event):
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
         url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&language=zh-TW"+'&key='+googlekey
-        print(event.message.text.split(','))
-        print(url)
+        #print(event.message.text.split(','))
+        #print(url)
         req = requests.get(url)#發送請求
         drink_json = json.loads(req.text) 
         columns_list=[]
@@ -231,32 +231,21 @@ def handle_message(event):
                         photo_reference_str = drink_json['results'][i]['photos'][0]['photo_reference']
                         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference="+photo_reference_str+"&key="+googlekey
                     else :
-                        url_photo = ""
-                    req_photo = requests.get(url_photo)
-                    if(req_photo.status_code == 200):
-                        url_photo_flag =True
-                    else:
-                        url_photo_flag = False    
+                        url_photo = ""  
                     address_url = 'https://www.google.com/maps/search/?api=1&query='+str(drink_json['results'][i]['geometry']['location']['lat'])+','+str(drink_json['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(drink_json['results'][i]['place_id'])
-                    if(url_photo_flag) and('formatted_address' in drink_json['results'][i]) and ('name' in drink_json['results'][i]):
+                    if(url_photo !=""): 
                         columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label=drink_json['results'][i]['formatted_address'],text=drink_json['results'][i]['formatted_address']),
                                 URITemplateAction(
                                     label='位置',
                                     uri=address_url
                                 )]))
-                    elif(url_photo_flag) and ('name' in drink_json['results'][i]) :
-                        columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = drink_json['results'][i]['name'],text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label="無法顯示地址",text="無法顯示地址"),
-                                    URITemplateAction(
-                                        label='位置',
-                                        uri=address_url
-                                    )]))
-                    print("title:"+drink_json['results'][i]['name'])
-                    print("title length :"+str(len(drink_json['results'][i]['name'])))
-                    print("thumbnail_image_url :"+str(url_photo_flag))
-                    print("label :"+drink_json['results'][i]['formatted_address'])
-                    print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
-                    print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
-                    print("address_url :"+address_url)
+                    #print("title:"+drink_json['results'][i]['name'])
+                    #print("title length :"+str(len(drink_json['results'][i]['name'])))
+                    #print("thumbnail_image_url :"+str(url_photo_flag))
+                    #print("label :"+drink_json['results'][i]['formatted_address'])
+                    #print("label length :"+str(len(drink_json['results'][i]['formatted_address'])))
+                    #print("label type:"+str(type(drink_json['results'][i]['formatted_address'])))
+                    #print("address_url :"+address_url)
                 if(i >=6): 
                     i = len(drink_json['results'])
                     break
