@@ -488,9 +488,10 @@ def FullToHalf(s):
     for char in s: 
         num = ord(char) 
         if num == 0x3000: 
-            num = 32 
-        elif 0xFF01 <= num <= 0xFF5E: 
-            num -= 0xfee0 
+            num = 32
+            n.append(num)    
+        elif (num >= 65281 and num <= 65374): 
+            num -= 65248
             num = chr(num) 
             n.append(num) 
     return ''.join(n) 
