@@ -513,7 +513,9 @@ def FullToHalf(s):
         if num == 0x3000: 
             num = 32 
         elif 0xFF01 <= num <= 0xFF5E: 
-            num -= 0xfee0 num = unichr(num) n.append(num) 
+            num -= 0xfee0 
+            num = unichr(num) 
+            n.append(num) 
     return ''.join(n) 
  
 """   
