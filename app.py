@@ -490,13 +490,12 @@ def FullToHalf(s):
         num = ord(char) 
         if num == 0x3000: 
             num = 32
-            n.append(num)    
+            n.append(chr(num))    
         elif (num >= 65281 and num <= 65374): 
             num -= 65248
-            num = chr(num) 
-            n.append(num)
+            n.append(chr(num))
         else:
-            n.append(num)
+            n.append(char)
     return ''.join(n) 
 
 """
