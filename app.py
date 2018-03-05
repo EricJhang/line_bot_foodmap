@@ -244,34 +244,36 @@ def handle_message(event):
                     tmp_string = str(drink_json['results'][i]["formatted_address"]).split("台灣",1)
                     print(tmp_string)
                     label_string="地址:"
-                    if(len(tmp_string) >=999):
-                        label_string = label_string+tmp_string[1]
-                    else:
-                        label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
+                    label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
                     print("label_string is:"+label_string)    
                     print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
                     print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
-                    columns_list.append(
-                    CarouselColumn(
-                        thumbnail_image_url=url_photo,
-                        title=drink_json['results'][i]['name'],
-                        text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
-                        actions=[
-                            MessageTemplateAction(
-                                label="地址",
-                                text=label_string
-                            ),
-                            URITemplateAction(label='位置',uri=address_url)]
-                            )
-                    )
+                    if(url_photo != "" ):
+                        columns_list.append(
+                        CarouselColumn(
+                            thumbnail_image_url=url_photo,
+                            title=drink_json['results'][i]['name'],
+                            text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                            actions=[
+                                MessageTemplateAction(
+                                    label="地址",
+                                    text=label_string
+                                ),
+                                URITemplateAction(label='位置',uri=address_url)]
+                                )
+                        )
                     #push_message(event.source.user_id,carousel_template_message)
-                if(i >=6): 
+                if(i >=9): 
                     i = len(drink_json['results'])
                     break
-            carousel_template_message = TemplateSendMessage(
-                alt_text='Drink carousel',
-                template=CarouselTemplate(columns=columns_list))
-            push_message(push_userid,carousel_template_message)
+            if(len(columns_list)>=1):        
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='Drink carousel',
+                    template=CarouselTemplate(columns=columns_list))
+                push_message(push_userid,carousel_template_message)
+            else:
+                message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
+                push_message(push_userid,message)
         else:
             message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
             push_message(push_userid,message)
