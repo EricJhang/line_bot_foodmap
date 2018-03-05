@@ -94,7 +94,7 @@ def handle_lcationmessage(event):
                 i = len(foodinfo['results'])
                 break
         carousel_template_message = TemplateSendMessage(
-                alt_text='美食搜尋結果'
+                alt_text='美食搜尋結果',
                 template=CarouselTemplate(columns=columns_list)
                 )
         push_message(push_userid,carousel_template_message)
