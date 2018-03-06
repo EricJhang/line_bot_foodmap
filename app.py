@@ -153,7 +153,7 @@ def handle_message(event):
                     reviews_text ="" 
                     if("reviews" in detal_json['results'][i]):
                         for item in detal_json['results'][i]["reviews"]:
-                            reviews_text=reviews_text+"評分:"item["rating"]+"/5\n"+"評論:"+item["text"]+"\n"
+                            reviews_text=reviews_text+"評分:"+item["rating"]+"/5\n"+"評論:"+item["text"]+"\n"
                     if(url_photo != "" ):                        
                         columns_list.append(
                         CarouselColumn(
