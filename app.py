@@ -46,6 +46,7 @@ def default(event):
     global serch_location
     print("enter default")
     print(event)
+
     
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
@@ -155,7 +156,11 @@ def handle_message(event):
                                         label="地址",
                                         text=label_string
                                     ),
-                                    URITemplateAction(label='位置',uri=address_url)
+                                    URITemplateAction(label='位置',uri=address_url),
+                                    PostbackTemplateAction(
+                                        label='評論',
+                                        data=drink_json['results'][i]['place_id']
+                                    )
                                     ]
                             )                                
                         )
