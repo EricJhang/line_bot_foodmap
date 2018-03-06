@@ -151,14 +151,22 @@ def handle_message(event):
                     reviews_text_01 =""
                     reviews_text_02 =""
                     reviews_text=""
+                    rating_01 = ""
+                    rating_02 = ""
                     if("reviews" in detal_json['result']):
                         if(len(detal_json['result']["reviews"])>=2):
-                            reviews_text_01 ="評分:"+str(detal_json['result']["reviews"][0]["rating"])+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
-                            reviews_text_02 ="評分:"+str(detal_json['result']["reviews"][1]["rating"])+"/5\n"+"評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
+                            rating_01 ="分數:"+str(detal_json['result']["reviews"][0]["rating"])
+                            reviews_text_01 ="評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            rating_02 = "分數:"+str(detal_json['result']["reviews"][1]["rating"])
+                            reviews_text_02 ="評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
                         elif(len(detal_json['result']["reviews"])==1):
-                            reviews_text_01 ="評分:"+str(detal_json['result']["reviews"][0]["rating"])+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            rating_01 ="分數:"+str(detal_json['result']["reviews"][0]["rating"])
+                            reviews_text_01 ="評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            rating_02="沒有分數"
                             reviews_text_02 ="沒有評論"
                         else:
+                            rating_01 = "沒有分數"
+                            rating_02 = "沒有分數"
                             reviews_text_01 ="沒有評論"
                             reviews_text_02 ="沒有評論" 
                     if(url_photo != "" ):                        
@@ -174,11 +182,11 @@ def handle_message(event):
                                     ),
                                     URITemplateAction(label='位置',uri=address_url),
                                     MessageTemplateAction(
-                                        label="評論1",
+                                        label="評論1:"+rating_01,
                                         text=reviews_text_01
                                     ),
                                     MessageTemplateAction(
-                                        label="評論2",
+                                        label="評論2"+rating_02,
                                         text=reviews_text_02
                                     )
                                     ]
