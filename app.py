@@ -148,7 +148,13 @@ def handle_message(event):
                     print(url_detal)
                     if("opening_hours" in drink_json['results'][i]):
                         print((drink_json['results'][i]["opening_hours"]["open_now"]=="true"))
-                    if(url_photo != "" ):
+                    req_detal = requests.get(url_detal)#發送請求
+                    detal_json = json.loads(req_detal)
+                    reviews_text ="" 
+                    if("reviews" in detal_json['results'][i]):
+                        for item in detal_json['results'][i]["reviews"]:
+                            reviews_text=reviews_text+"評分:"item["rating"]+"/5\n"+"評論:"+item["text"]+"\n"
+                    if(url_photo != "" ):                        
                         columns_list.append(
                         CarouselColumn(
                             thumbnail_image_url=url_photo,
@@ -160,6 +166,10 @@ def handle_message(event):
                                     text=label_string
                                 ),
                                 URITemplateAction(label='位置',uri=address_url)]
+                                ),
+                                MessageTemplateAction(
+                                    label="評論",
+                                    text=reviews_text
                                 )
                         )
                     #push_message(event.source.user_id,carousel_template_message)
