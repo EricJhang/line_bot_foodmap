@@ -122,7 +122,7 @@ def handle_message(event):
     elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ) :
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
-        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&radius=100&language=zh-TW"+'&key='+googlekey
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&rankby=prominence&language=zh-TW"+'&key='+googlekey
         #print(event.message.text.split(','))
         print(url)
         req = requests.get(url)#發送請求
@@ -141,10 +141,12 @@ def handle_message(event):
                     print(tmp_string)
                     label_string="地址:"
                     label_string = label_string+FullToHalf(drink_json['results'][i]["formatted_address"])
-                    print("label_string is:"+label_string)    
-                    print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
-                    print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
-                    if(url_photo != "" ):
+                    #print("label_string is:"+label_string)    
+                    #print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
+                    #print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
+                    url_detal = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+drink_json['results'][i]['place_id']+"&key="+googlekey
+                    print()
+                    if(url_photo != "" ) and (drink_json['results'][i]["opening_hours"]["open_now"]=="true"):
                         columns_list.append(
                         CarouselColumn(
                             thumbnail_image_url=url_photo,
