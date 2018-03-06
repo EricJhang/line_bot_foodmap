@@ -61,7 +61,7 @@ def default(event):
         if("reviews" in detal_json['result']):
             if(len(detal_json['result']["reviews"])>=1):
                 for i in range(len(detal_json['result']["reviews"])):
-                    reviews_text =reviews_text+"評分:"+str(detal_json['result']["reviews"][0]["rating"])+"/5\n"+ "評論:"+detal_json['result']["reviews"][0]["text"]+"\n\n"
+                    reviews_text =reviews_text+"評分:"+str(detal_json['result']["reviews"][i]["rating"])+"/5\n"+ "評論:"+detal_json['result']["reviews"][i]["text"]+"\n\n"
             else:
                 reviews_text ="沒有評論"
         else:
