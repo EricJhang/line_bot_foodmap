@@ -154,10 +154,10 @@ def handle_message(event):
                     reviews_text_02 =""                     
                     if("reviews" in detal_json['result'][i]):
                         if(len(detal_json['result'][i]["reviews"])>=2):
-                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['results'][i]["reviews"][0]["text"]+"\n"
+                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][0]["text"]+"\n"
                             reviews_text_02 ="評分:"+detal_json['result'][i]["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][1]["text"]+"\n"
                         elif(len(detal_json['result'][i]["reviews"])==1):
-                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['results'][i]["reviews"][0]["text"]+"\n"
+                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][0]["text"]+"\n"
                         else:
                             reviews_text_01 ="沒有評論"
                     if(url_photo != "" ):                        
