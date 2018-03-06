@@ -107,11 +107,17 @@ def handle_lcationmessage(event):
                 url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
             if(url_photo != ""):
-                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity']),
+                columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[
+                        MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
                             label='位置',
                             uri=address_url
-                        )]))            
+                        ),
+                        PostbackTemplateAction(
+                                        label='評論',
+                                        data=foodinfo['results'][i]['place_id']
+                                    )
+                        ]))            
             if(i >=8): 
                 i = len(foodinfo['results'])
                 break
