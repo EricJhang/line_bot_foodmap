@@ -145,8 +145,9 @@ def handle_message(event):
                     #print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
                     #print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
                     url_detal = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+drink_json['results'][i]['place_id']+"&key="+googlekey
-                    print()
-                    if(url_photo != "" ) and (drink_json['results'][i]["opening_hours"]["open_now"]=="true"):
+                    print(url_detal)
+                    print((drink_json['results'][i]["opening_hours"]["open_now"]=="true"))
+                    if(url_photo != "" ):
                         columns_list.append(
                         CarouselColumn(
                             thumbnail_image_url=url_photo,
