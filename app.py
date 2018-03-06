@@ -144,31 +144,6 @@ def handle_message(event):
                     #print("label_string is:"+label_string)    
                     #print("轉碼前:"+drink_json['results'][i]["formatted_address"])    
                     #print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
-                    url_detal = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+drink_json['results'][i]['place_id']+"&key="+googlekey
-                    print(url_detal)
-                    req_detal = requests.get(url_detal)#發送請求
-                    detal_json = json.loads(req_detal.text)
-                    reviews_text_01 =""
-                    reviews_text_02 =""
-                    reviews_text=""
-                    rating_01 = ""
-                    rating_02 = ""
-                    if("reviews" in detal_json['result']):
-                        if(len(detal_json['result']["reviews"])>=2):
-                            rating_01 ="分數:"+str(detal_json['result']["reviews"][0]["rating"])
-                            reviews_text_01 ="評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
-                            rating_02 = "分數:"+str(detal_json['result']["reviews"][1]["rating"])
-                            reviews_text_02 ="評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
-                        elif(len(detal_json['result']["reviews"])==1):
-                            rating_01 ="分數:"+str(detal_json['result']["reviews"][0]["rating"])
-                            reviews_text_01 ="評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
-                            rating_02="沒有分數"
-                            reviews_text_02 ="沒有評論"
-                        else:
-                            rating_01 = "沒有分數"
-                            rating_02 = "沒有分數"
-                            reviews_text_01 ="沒有評論"
-                            reviews_text_02 ="沒有評論" 
                     if(url_photo != "" ):                        
                         columns_list.append(
                             CarouselColumn(
