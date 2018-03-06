@@ -146,18 +146,16 @@ def handle_message(event):
                     #print("轉碼後:"+FullToHalf(drink_json['results'][i]["formatted_address"]))
                     url_detal = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+drink_json['results'][i]['place_id']+"&key="+googlekey
                     print(url_detal)
-                    if("opening_hours" in drink_json['results'][i]):
-                        print((drink_json['results'][i]["opening_hours"]["open_now"]=="true"))
                     req_detal = requests.get(url_detal)#發送請求
                     detal_json = json.loads(req_detal.text)
                     reviews_text_01 =""
                     reviews_text_02 =""                     
-                    if("reviews" in detal_json['result'][i]):
-                        if(len(detal_json['result'][i]["reviews"])>=2):
-                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][0]["text"]+"\n"
-                            reviews_text_02 ="評分:"+detal_json['result'][i]["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][1]["text"]+"\n"
-                        elif(len(detal_json['result'][i]["reviews"])==1):
-                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][0]["text"]+"\n"
+                    if("reviews" in detal_json['result']):
+                        if(len(detal_json['result']["reviews"])>=2):
+                            reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            reviews_text_02 ="評分:"+detal_json['result']["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
+                        elif(len(detal_json['result']["reviews"])==1):
+                            reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
                         else:
                             reviews_text_01 ="沒有評論"
                     if(url_photo != "" ):                        
