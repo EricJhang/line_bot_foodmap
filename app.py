@@ -46,7 +46,31 @@ def default(event):
     global serch_location
     print("enter default")
     print(event)
-
+    push_userid =""
+    if(event.source.type == 'user'):
+        push_userid = event.source.user_id
+    elif(event.source.type == 'group'):
+        push_userid = event.source.group_id
+    if(event.type =="postback"):
+        event.postback.data
+        url_detal = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+event.postback.data+"&key="+googlekey
+        print(url_detal)
+        req_detal = requests.get(url_detal)#發送請求
+        detal_json = json.loads(req_detal.text)
+        reviews_text_01 =""
+        reviews_text_02 =""
+        reviews_text=""
+        rating_01 = ""
+        rating_02 = ""
+        if("reviews" in detal_json['result']):
+            if(len(detal_json['result']["reviews"])>=1):
+                reviews_text =reviews_text+"評分:"+str(detal_json['result']["reviews"][0]["rating"])+"/5\n"+ "評論:"+detal_json['result']["reviews"][0]["text"]+"\n\n"
+            else:
+                reviews_text ="沒有評論"
+        else:
+            reviews_text ="沒有評論"
+        message = TextSendMessage(text= reviews_text)
+        push_message(push_userid,message)
     
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_lcationmessage(event):
