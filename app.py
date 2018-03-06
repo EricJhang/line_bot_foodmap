@@ -149,20 +149,7 @@ def handle_message(event):
                     req_detal = requests.get(url_detal)#發送請求
                     detal_json = json.loads(req_detal.text)
                     reviews_text_01 =""
-                    reviews_text_02 =""                    
-                    if("reviews" in detal_json['result']):
-                        if(len(detal_json['result']["reviews"])>=2):
-                            
-                            #reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
-                            #reviews_text_02 ="評分:"+detal_json['result']["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
-                            print(detal_json['result']["reviews"])
-                            print(len(detal_json['result']["reviews"]))
-                        elif(len(detal_json['result']["reviews"])==1):
-                            #reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
-                            reviews_text_02 ="沒有評論"
-                        else:
-                            reviews_text_01 ="沒有評論"
-                            reviews_text_02 ="沒有評論" 
+                    reviews_text_02 =""                                        
                     if(url_photo != "" ):                        
                         columns_list.append(
                         CarouselColumn(
@@ -189,6 +176,18 @@ def handle_message(event):
             else:
                 message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
                 push_message(push_userid,message)
+            if("reviews" in detal_json['result']):
+                        if(len(detal_json['result']["reviews"])>=2):
+                            #reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            #reviews_text_02 ="評分:"+detal_json['result']["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][1]["text"]+"\n"
+                            print(detal_json['result']["reviews"][0])
+                            print(detal_json['result']["reviews"][1])
+                        elif(len(detal_json['result']["reviews"])==1):
+                            #reviews_text_01 ="評分:"+detal_json['result']["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['result']["reviews"][0]["text"]+"\n"
+                            reviews_text_02 ="沒有評論"
+                        else:
+                            reviews_text_01 ="沒有評論"
+                            reviews_text_02 ="沒有評論"     
         else:
             message = TextSendMessage(text= "抱歉該位置附近沒有"+search_kind_tmp+"唷，可以試著打出更詳細地址或者搜尋其他地址")
             push_message(push_userid,message)
