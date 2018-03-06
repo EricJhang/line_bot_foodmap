@@ -200,7 +200,6 @@ def handle_message(event):
         #push_message(push_userid,buttons_template_message)
     #content = "{}: {}".format(event.source.user_id, event.message.text)
 
-    
     #try:
     #    profile = line_bot_api.get_profile(event.source.user_id)
     #    print(profile.display_name)
