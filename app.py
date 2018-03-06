@@ -180,15 +180,7 @@ def handle_message(event):
                                         label="地址",
                                         text=label_string
                                     ),
-                                    URITemplateAction(label='位置',uri=address_url),
-                                    MessageTemplateAction(
-                                        label="評論1:"+rating_01,
-                                        text=reviews_text_01
-                                    ),
-                                    MessageTemplateAction(
-                                        label="評論2"+rating_02,
-                                        text=reviews_text_02
-                                    )
+                                    URITemplateAction(label='位置',uri=address_url)
                                     ]
                             )                                
                         )
