@@ -149,7 +149,7 @@ def handle_message(event):
                     if("opening_hours" in drink_json['results'][i]):
                         print((drink_json['results'][i]["opening_hours"]["open_now"]=="true"))
                     req_detal = requests.get(url_detal)#發送請求
-                    detal_json = json.loads(req_detal)
+                    detal_json = json.loads(req_detal.text)
                     reviews_text ="" 
                     if("reviews" in detal_json['results'][i]):
                         for item in detal_json['results'][i]["reviews"]:
