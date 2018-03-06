@@ -150,10 +150,16 @@ def handle_message(event):
                         print((drink_json['results'][i]["opening_hours"]["open_now"]=="true"))
                     req_detal = requests.get(url_detal)#發送請求
                     detal_json = json.loads(req_detal.text)
-                    reviews_text ="" 
-                    if("reviews" in detal_json['results'][i]):
-                        for item in detal_json['results'][i]["reviews"]:
-                            reviews_text=reviews_text+"評分:"+item["rating"]+"/5\n"+"評論:"+item["text"]+"\n"
+                    reviews_text_01 =""
+                    reviews_text_02 =""                     
+                    if("reviews" in detal_json['result'][i]):
+                        if(len(detal_json['result'][i]["reviews"])>=2):
+                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['results'][i]["reviews"][0]["text"]+"\n"
+                            reviews_text_02 ="評分:"+detal_json['result'][i]["reviews"][1]["rating"]+"/5\n"+"評論:"+detal_json['result'][i]["reviews"][1]["text"]+"\n"
+                        elif(len(detal_json['result'][i]["reviews"])==1):
+                            reviews_text_01 ="評分:"+detal_json['result'][i]["reviews"][0]["rating"]+"/5\n"+"評論:"+detal_json['results'][i]["reviews"][0]["text"]+"\n"
+                        else:
+                            reviews_text_01 ="沒有評論"
                     if(url_photo != "" ):                        
                         columns_list.append(
                         CarouselColumn(
@@ -168,8 +174,12 @@ def handle_message(event):
                                 URITemplateAction(label='位置',uri=address_url)]
                                 ),
                                 MessageTemplateAction(
-                                    label="評論",
-                                    text=reviews_text
+                                    label="評論1",
+                                    text=reviews_text_01
+                                ),
+                                MessageTemplateAction(
+                                    label="評論2",
+                                    text=reviews_text_02
                                 )
                         )
                     #push_message(event.source.user_id,carousel_template_message)
