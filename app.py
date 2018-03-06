@@ -163,25 +163,26 @@ def handle_message(event):
                             reviews_text_02 ="沒有評論" 
                     if(url_photo != "" ):                        
                         columns_list.append(
-                        CarouselColumn(
-                            thumbnail_image_url=url_photo,
-                            title=drink_json['results'][i]['name'],
-                            text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
-                            actions=[
-                                MessageTemplateAction(
-                                    label="地址",
-                                    text=label_string
-                                ),
-                                URITemplateAction(label='位置',uri=address_url),
-                                MessageTemplateAction(
-                                    label="評論1",
-                                    text=reviews_text_01
-                                ),
-                                MessageTemplateAction(
-                                    label="評論2",
-                                    text=reviews_text_02
-                                )
-                                ]                             
+                            CarouselColumn(
+                                thumbnail_image_url=url_photo,
+                                title=drink_json['results'][i]['name'],
+                                text="網友推薦指數:"+str(drink_json['results'][i]['rating'])+"/5",
+                                actions=[
+                                    MessageTemplateAction(
+                                        label="地址",
+                                        text=label_string
+                                    ),
+                                    URITemplateAction(label='位置',uri=address_url),
+                                    MessageTemplateAction(
+                                        label="評論1",
+                                        text=reviews_text_01
+                                    ),
+                                    MessageTemplateAction(
+                                        label="評論2",
+                                        text=reviews_text_02
+                                    )
+                                    ]
+                            )                                
                         )
                     #push_message(event.source.user_id,carousel_template_message)
                 if(i >=9): 
