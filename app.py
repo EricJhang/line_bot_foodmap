@@ -106,7 +106,7 @@ def handle_lcationmessage(event):
             else :
                 url_photo = ""
             address_url = 'https://www.google.com/maps/search/?api=1&query='+str(foodinfo['results'][i]['geometry']['location']['lat'])+','+str(foodinfo['results'][i]['geometry']['location']['lng'])+'&query_place_id='+str(foodinfo['results'][i]['place_id'])
-            if(url_photo != ""):
+            if(url_photo != "") and ('rating' in foodinfo['results'][i]):
                 columns_list.append(CarouselColumn(thumbnail_image_url = url_photo,title = foodinfo['results'][i]['name'],text="網友推薦指數:"+str(foodinfo['results'][i]['rating'])+"/5",actions=[
                         MessageTemplateAction(label="地址",text=foodinfo['results'][i]['vicinity']),
                         URITemplateAction(
@@ -150,7 +150,7 @@ def handle_message(event):
     elif( "#搜尋" in event.message.text) and (len(event.message.text.split(',')) >=2 ) :
         search_kind_tmp = address_tmp = event.message.text.split(',')[1];
         address_tmp = event.message.text.split(',')[2];
-        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+in+'+address_tmp+"&rankby=prominence&language=zh-TW"+'&key='+googlekey
+        url= 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+search_kind_tmp+'+'+address_tmp+"&rankby=prominence&language=zh-TW"+'&key='+googlekey
         #print(event.message.text.split(','))
         print(url)
         req = requests.get(url)#發送請求
@@ -158,7 +158,7 @@ def handle_message(event):
         columns_list=[]
         if(len(drink_json['results']) >= 1):
             for i in range(len(drink_json['results'])):
-                if ("formatted_address" in drink_json['results'][i]) and ("name" in drink_json['results'][i]):
+                if ("formatted_address" in drink_json['results'][i]) and ("name" in drink_json['results'][i]) and ('rating' in drink_json['results'][i]):
                     if( 'photos' in drink_json['results'][i]):
                         photo_reference_str = drink_json['results'][i]['photos'][0]['photo_reference']
                         url_photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference="+photo_reference_str+"&key="+googlekey
